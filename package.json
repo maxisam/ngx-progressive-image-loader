@@ -27,7 +27,7 @@
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
     "zone.js": "~0.8.26",
-    "ngx-progressive-image-loader": "0.0.1"
+    "ngx-progressive-image-loader": "^0.0.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0-beta.2",
