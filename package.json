@@ -7,6 +7,7 @@
     "build": "ng build",
     "build:l": "ng build ngx-progressive-image-loader && npm run copy-scss",
     "build:l:w": "ng build ngx-progressive-image-loader --watch",
+    "publish:l": "npm publish ./dist/ngx-progressive-image-loader",
     "copy-scss": "cpx \"./projects/ngx-progressive-image-loader/src/lib/*.scss\" \"./dist/ngx-progressive-image-loader/\" --verbose",
     "test": "ng test",
     "lint": "ng lint",
