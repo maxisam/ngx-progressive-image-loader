@@ -1,6 +1,16 @@
 # NgxProgressiveImageLoader
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.0 beta 02.
+
+Kudos to the following authors:
+
+https://deanhume.com/lazy-loading-images-using-intersection-observer/
+
+https://www.voorhoede.nl/en/blog/say-no-to-image-reflow/
+
+https://jmperezperez.com/medium-image-progressive-loading-placeholder/
+
+And my wife and my child to let me work on a weekend for this.
 
 ## Development server
 

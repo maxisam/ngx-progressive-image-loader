@@ -16,6 +16,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-progressive-image-loader": [
+        "dist/ngx-progressive-image-loader"
+      ],
+      "ngx-progressive-image-loader/*": [
+        "dist/ngx-progressive-image-loader/*"
+      ]
+    }
   }
 }
