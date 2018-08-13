@@ -1,6 +1,26 @@
 {
   "name": "ngx-progressive-image-loader",
   "version": "0.0.1",
+  "author": {
+    "name": "Sam Lin",
+    "email": "maxisam@gmail.com"
+  },
+  "homepage": "https://github.com/maxisam/ngx-progressive-image-loader",
+  "license": "MIT",
+  "publishConfig": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxisam/ngx-progressive-image-loader"
+  },
+  "bugs": {
+    "url": "https://github.com/maxisam/ngx-progressive-image-loader/issues"
+  },
+  "keywords": [
+    "angular",
+    "lazy-loading",
+    "progressive-image-loader",
+    "image lazy loader"
+  ],
   "peerDependencies": {
     "@angular/common": "^6.0.0",
     "@angular/core": "^6.0.0"
