@@ -25,8 +25,8 @@ export class ImagePlaceholderComponent implements OnInit {
   @Input()
   loadingImage: string;
 
-  get imageFilter(): string {
-    return `blur(${this._ProgressiveImageLoader.blurFilter}px)`;
+  get imageFilter(): SafeStyle {
+    return this.sanitizer.bypassSecurityTrustStyle(`blur(${this._ProgressiveImageLoader.blurFilter}px)`);
   }
 
   get safeLoadingImage() {
