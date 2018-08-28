@@ -11,6 +11,7 @@ import {
   QueryList,
   Renderer2,
 } from '@angular/core';
+import { WINDOW } from 'ngx-window-token';
 
 import { ConfigurationService } from '../configuration.service';
 import { ProgressiveImageDirective } from '../progressive-image/progressive-image.directive';
@@ -41,22 +42,32 @@ export class ProgressiveImageLoaderComponent implements OnInit, AfterContentInit
     element: ElementRef,
     public renderer: Renderer2,
     public _ConfigurationService: ConfigurationService,
-    @Inject(PLATFORM_ID) private platformId: any
+    @Inject(PLATFORM_ID) private platformId: any,
+    @Inject(WINDOW) private window: any
   ) {}
 
   ngOnInit() {
+    if (
+      'IntersectionObserver' in this.window &&
+      'IntersectionObserverEntry' in this.window &&
+      'intersectionRatio' in this.window.IntersectionObserverEntry.prototype
+    ) {
     this.intersectionObserver = new IntersectionObserver(
-      this.onIntersectionChange.bind(this),
+        this.onIntersectionChanged.bind(this),
       this._ConfigurationService.config
     );
-    return this.intersectionObserver;
+    } else {
+      throw new Error(
+        'Require IntersectionObserver support from browser or polyfill. https://github.com/w3c/IntersectionObserver '
+      );
+    }
   }
 
   ngAfterContentInit() {
     this.images.forEach(image => this.intersectionObserver.observe(image.imageElement));
   }
 
-  onIntersectionChange(entries: IntersectionObserverEntry[], observer: IntersectionObserver) {
+  onIntersectionChanged(entries: IntersectionObserverEntry[], observer: IntersectionObserver) {
     entries.forEach(entry => entry.isIntersecting && this.onImageAppearsInViewport(entry.target, observer));
   }
 
