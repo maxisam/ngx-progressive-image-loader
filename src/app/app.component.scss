@@ -2,3 +2,20 @@ img {
   width: 100%;
   height: 100%;
 }
+
+.before-image {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+strong {
+  color: maroon;
+  font-size: 1.5rem;
+}
+.lorem-ipsum {
+  color: lightgray;
+}
+.ngx-image-placeholder {
+  margin-bottom: 2rem;
+}
