@@ -12,7 +12,7 @@ import { ProgressiveImageLoaderComponent } from '../progressive-image-loader/pro
 })
 export class ImagePlaceholderComponent implements OnInit {
   @HostBinding('class')
-  class = 'progressive-image-placeholder';
+  class = 'ngx-image-placeholder';
   @HostBinding('style')
   get placeHolder(): SafeStyle {
     return this.sanitizer.bypassSecurityTrustStyle(
@@ -20,17 +20,21 @@ export class ImagePlaceholderComponent implements OnInit {
     );
   }
 
+  // to create a placeholder before finish loading the real image to avoid reflow
   @Input()
   imageRatio: number;
+  // a loading image showing before the real image is loaded
   @Input()
-  loadingImage: string;
+  loadingImageSrc: string;
 
   get imageFilter(): SafeStyle {
     return this.sanitizer.bypassSecurityTrustStyle(`blur(${this._ProgressiveImageLoader.blurFilter}px)`);
   }
 
   get safeLoadingImage() {
-    return this.sanitizer.bypassSecurityTrustUrl(this.loadingImage || this._ProgressiveImageLoader.placeHolderImage);
+    return this.sanitizer.bypassSecurityTrustUrl(
+      this.loadingImageSrc || this._ProgressiveImageLoader.placeHolderImageSrc
+    );
   }
 
   constructor(private sanitizer: DomSanitizer, private _ProgressiveImageLoader: ProgressiveImageLoaderComponent) {}
