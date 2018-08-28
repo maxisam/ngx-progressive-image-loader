@@ -22,17 +22,16 @@ import { ProgressiveImageDirective } from '../progressive-image/progressive-imag
   styles: []
 })
 export class ProgressiveImageLoaderComponent implements OnInit, AfterContentInit, OnDestroy {
+  // define the placeholder height for all images inside this components
   @Input()
-  imageRatio = 16 / 9;
-
+  imageRatio: number;
+  // to define how blur the loading image is
   @Input()
-  blurFilter = 0;
-
+  blurFilter: number;
+  // the src of loading image
   @Input()
-  placeHolderImage =
-    // tslint:disable-next-line:max-line-length
-    'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICA8cGF0aCBmaWxsPSIjZGQwMDMxIiBkPSJNMTI1IDMwTDMxLjkgNjMuMmwxNC4yIDEyMy4xTDEyNSAyMzBsNzguOS00My43IDE0LjItMTIzLjF6Ii8+CiAgPHBhdGggZmlsbD0iI2MzMDAyZiIgZD0iTTEyNSAzMHYyMi4yLS4xVjIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMUwxMjUgMzB6Ii8+CiAgPHBhdGggZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPgo=';
-
+  placeHolderImageSrc: string;
+  // get all ProgressiveImageDirective that might be wrapped in image placeholders
   @ContentChildren(ProgressiveImageDirective, { descendants: true })
   images: QueryList<ProgressiveImageDirective>;
 
@@ -52,10 +51,19 @@ export class ProgressiveImageLoaderComponent implements OnInit, AfterContentInit
       'IntersectionObserverEntry' in this.window &&
       'intersectionRatio' in this.window.IntersectionObserverEntry.prototype
     ) {
-    this.intersectionObserver = new IntersectionObserver(
+      if (!this.imageRatio) {
+        this.imageRatio = this._ConfigurationService.config.imageRatio;
+      }
+      if (!this.blurFilter) {
+        this.blurFilter = this._ConfigurationService.config.blurFilter;
+      }
+      if (!this.placeHolderImageSrc) {
+        this.placeHolderImageSrc = this._ConfigurationService.config.placeHolderImage;
+      }
+      this.intersectionObserver = new IntersectionObserver(
         this.onIntersectionChanged.bind(this),
-      this._ConfigurationService.config
-    );
+        this._ConfigurationService.config
+      );
     } else {
       throw new Error(
         'Require IntersectionObserver support from browser or polyfill. https://github.com/w3c/IntersectionObserver '
