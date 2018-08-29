@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ngx-progressive-image-loader';
+  image3 = '/assets/Avengers3.jpg';
 }

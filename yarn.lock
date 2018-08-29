@@ -4266,9 +4266,9 @@ ng-packagr@^4.1.1:
     uglify-js "^3.0.7"
     update-notifier "^2.3.0"
 
-ngx-progressive-image-loader@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/ngx-progressive-image-loader/-/ngx-progressive-image-loader-0.1.1.tgz#647a554be21c59464f8a555df44f94536a0c7957"
+ngx-progressive-image-loader@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/ngx-progressive-image-loader/-/ngx-progressive-image-loader-0.1.2.tgz#88b748d0ae251aa42e4d669648455afd2874f1ed"
   dependencies:
     ngx-window-token "^1.0.0"
     tslib "^1.9.0"

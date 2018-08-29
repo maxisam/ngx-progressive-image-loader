@@ -23,8 +23,6 @@ Support Angular >=6.0.0
 
 - Show small default loading image with fading transition
 
-- Doesn't need to change original image / picture code. Just need to add some attributes and wrappers.
-
 ## Install
 
 ```bat
@@ -54,6 +52,46 @@ Add style to your global scss
 @include progressive-image-loader();
 ```
 
+## Usage
+
+- with img
+
+```html
+<ngx-progressive-image-loader>
+  <ngx-image-placeholder>
+    <img [attr.data-src]="'/assets/Avengers1.jpg'" alt="" ngxProgressiveImage>
+  </ngx-image-placeholder>
+   <ngx-image-placeholder>
+    <img data-src="/assets/Avengers2.jpg" alt="" ngxProgressiveImage>
+  </ngx-image-placeholder>
+</ngx-progressive-image-loader>
+```
+
+- with img + srcset
+
+```html
+<ngx-progressive-image-loader>
+  <ngx-image-placeholder>
+    <img [attr.data-src]="'/assets/Avengers6.jpg'" [attr.data-srcset]="'/assets/Avengers6.jpg 800w,/assets/Avengers7.jpg 1366w'"
+      size="(max-width: 1000px) 100vw, 100vw" ngxProgressiveImage>
+  </ngx-image-placeholder>
+</ngx-progressive-image-loader>
+```
+
+- with picture element
+
+```html
+<ngx-progressive-image-loader>
+  <ngx-image-placeholder>
+    <picture ngxProgressiveImage>
+      <source [attr.data-srcset]="'/assets/Avengers4.jpg'" media="(max-width: 1000px)">
+      <source [attr.data-srcset]="'/assets/Avengers5.jpg'" media="(min-width: 1000px)">
+      <img [attr.data-src]="'/assets/Avengers4.jpg'" alt="My default image">
+    </picture>
+  </ngx-image-placeholder>
+</ngx-progressive-image-loader>
+```
+
 ## Build project
 
 ```bat
@@ -65,6 +103,16 @@ npm run build
 To run demo code locally
 
 `npm run start`
+
+## Browser Compatibility
+
+Browsers don't support Intersection Observer API will not work as expect. It will load images like old time.
+
+Use [pollyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill) like below might make it work.
+
+```html
+<script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
+```
 
 ## Contributing
 
