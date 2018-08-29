@@ -4,6 +4,9 @@
   "deleteDestPath": false,
   "whitelistedNonPeerDependencies": ["ngx-window-token"],
   "lib": {
-    "entryFile": "src/public_api.ts"
+    "entryFile": "src/public_api.ts",
+    "umdModuleIds": {
+      "ngx-window-token": "ngxWindowToken"
+    }
   }
 }
