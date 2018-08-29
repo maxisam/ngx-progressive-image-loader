@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npm run build",
+    "build": "npm run build:l",
     "build:l": "ng build ngx-progressive-image-loader && npm run copy-scss && npm run copy-readme",
     "build:l:w": "ng build ngx-progressive-image-loader --watch",
     "publish:l": "npm publish ./dist/ngx-progressive-image-loader",
@@ -29,7 +29,7 @@
     "core-js": "^2.5.4",
     "rxjs": "^6.2.2",
     "zone.js": "~0.8.26",
-    "ngx-progressive-image-loader": "^0.0.2"
+    "ngx-progressive-image-loader": "^0.1.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0-rc.0",
