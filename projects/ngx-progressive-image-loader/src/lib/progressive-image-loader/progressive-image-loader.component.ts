@@ -39,7 +39,7 @@ export class ProgressiveImageLoaderComponent implements OnInit, AfterContentInit
 
   constructor(
     element: ElementRef,
-    public renderer: Renderer2,
+    public _Renderer: Renderer2,
     public _ConfigurationService: ConfigurationService,
     @Inject(PLATFORM_ID) private platformId: any,
     @Inject(WINDOW) private window: any
@@ -64,10 +64,6 @@ export class ProgressiveImageLoaderComponent implements OnInit, AfterContentInit
         this.onIntersectionChanged.bind(this),
         this._ConfigurationService.config
       );
-    } else {
-      throw new Error(
-        'Require IntersectionObserver support from browser or polyfill. https://github.com/w3c/IntersectionObserver '
-      );
     }
   }
 
@@ -84,20 +80,25 @@ export class ProgressiveImageLoaderComponent implements OnInit, AfterContentInit
     observer.unobserve(image);
     if (image instanceof HTMLImageElement) {
       if (image.dataset.src) {
-        this.renderer.setAttribute(image, 'src', image.dataset.src);
-        this.renderer.removeAttribute(image, 'data-src');
+        this._Renderer.setAttribute(image, 'src', image.dataset.src);
+        this._Renderer.removeAttribute(image, 'data-src');
+      } else if (image.dataset.srcset) {
+        this._Renderer.setAttribute(image, 'srcset', image.dataset.srcset);
+        this._Renderer.removeAttribute(image, 'data-srcset');
+      }
+    } else if (image instanceof HTMLPictureElement) {
+      const sourceElms = image.children;
+      for (let index = 0; index < sourceElms.length; index++) {
+        const element = sourceElms[index];
+        if (element instanceof HTMLSourceElement) {
+          this._Renderer.setAttribute(element, 'srcset', element.dataset.srcset);
+          this._Renderer.removeAttribute(element, 'data-srcset');
+        } else if (element instanceof HTMLImageElement) {
+          this._Renderer.setAttribute(element, 'src', element.dataset.src);
+          this._Renderer.removeAttribute(element, 'data-src');
+        }
       }
     }
-
-    // if (image.dataset.srcset) {
-    //   this.renderer.setAttribute(image, 'srcset', image.dataset.srcset);
-    //   this.renderer.removeAttribute(image, 'data-srcset');
-    // }
-
-    // if (image.dataset.backgroundSrc) {
-    //   this.renderer.setStyle(image, 'background-image', `url(${image.dataset.backgroundSrc})`);
-    //   this.renderer.removeAttribute(image, 'data-background-src');
-    // }
   }
   ngOnDestroy(): void {
     this.intersectionObserver.disconnect();

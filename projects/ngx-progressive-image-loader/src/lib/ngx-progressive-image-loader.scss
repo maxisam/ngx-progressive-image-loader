@@ -12,16 +12,17 @@
       transform: scale(1);
       opacity: 1;
     }
-    img {
+    img,
+    picture {
       position: absolute;
       opacity: 0;
       top: 0;
       left: 0;
       width: 100%;
       transition: opacity 1s linear;
-    }
-    img.loaded {
-      opacity: 1;
+      &.loaded {
+        opacity: 1;
+      }
     }
   }
 }
