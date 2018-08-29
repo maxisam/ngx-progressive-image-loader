@@ -15,7 +15,7 @@ import { WINDOW } from 'ngx-window-token';
 
 import { ConfigurationService } from '../configuration.service';
 import { ProgressiveImageDirective } from '../progressive-image/progressive-image.directive';
-import { isSupportIntersectionObserver, loadImage } from '../util';
+import { isSpider, isSupportIntersectionObserver, loadImage } from '../util';
 
 @Component({
   selector: 'ngx-progressive-image-loader',
@@ -47,7 +47,7 @@ export class ProgressiveImageLoaderComponent implements OnInit, AfterContentInit
   ) {}
 
   ngOnInit() {
-    if (isSupportIntersectionObserver(this.window)) {
+    if (isSupportIntersectionObserver(this.window) && !isSpider(this.window)) {
       if (!this.imageRatio) {
         this.imageRatio = this._ConfigurationService.config.imageRatio;
       }

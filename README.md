@@ -13,15 +13,17 @@ Support Angular >=6.0.0
 
 ## Features
 
-- No other JS dependency. Just Angular.
+- No other JS dependency. Just Angular
 
-- Use **IntersectionObserver** to determine the timing to load the image.
+- Use **IntersectionObserver** to determine the timing to load the image
 
 - Support image and picture
 
 - Preserve space to avoid dom reflow
 
 - Show small default loading image with fading transition
+
+- Load image directly for spider (SEO friendly) or non-supported browsers
 
 ## Install
 

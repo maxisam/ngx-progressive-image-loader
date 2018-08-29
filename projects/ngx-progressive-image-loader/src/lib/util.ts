@@ -38,3 +38,7 @@ export function loadImage(renderer: Renderer2, image: Element) {
     }
   }
 }
+
+export function isSpider(window) {
+  (window && !('onscroll' in window)) || /(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent);
+}

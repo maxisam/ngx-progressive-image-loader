@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Inject, OnInit, Renderer2 } from '@angular/core';
 import { WINDOW } from 'ngx-window-token';
 
-import { isSupportIntersectionObserver, loadImage } from '../util';
+import { isSpider, isSupportIntersectionObserver, loadImage } from '../util';
 
 @Directive({
   // make sure the element is an image element
@@ -14,7 +14,7 @@ export class ProgressiveImageDirective implements OnInit {
   constructor(private _ElementRef: ElementRef, public _Renderer: Renderer2, @Inject(WINDOW) private window: any) {}
   ngOnInit(): void {
     this.imageElement = this._ElementRef.nativeElement;
-    if (isSupportIntersectionObserver(this.window)) {
+    if (isSupportIntersectionObserver(this.window) && !isSpider(this.window)) {
       this.setOnLoadedAction();
     } else {
       // show image directly
