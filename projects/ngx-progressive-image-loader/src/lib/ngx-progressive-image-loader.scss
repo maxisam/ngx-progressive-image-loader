@@ -12,8 +12,8 @@
       transform: scale(1);
       opacity: 1;
     }
-    img,
-    picture {
+    & > img,
+    & > picture {
       position: absolute;
       opacity: 0;
       top: 0;
