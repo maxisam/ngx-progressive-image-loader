@@ -46,6 +46,14 @@ imports: [
 ]
 ```
 
+Add style to your global scss
+
+```scss
+@import '~ngx-progressive-image-loader/ngx-progressive-image-loader';
+
+@include progressive-image-loader();
+```
+
 ## Build project
 
 ```bat
