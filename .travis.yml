@@ -26,8 +26,7 @@ install:
   - yarn
 
 script:
-  - npm run test -- --watch=false --progress=false --browsers=ChromeHeadlessCI
-  - npm run build
+  - npm run build:l
 
 after_success:
-  - npm publish .\dist\ngx-progressive-image-loader\
+  - npm publish:lib
