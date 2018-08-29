@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/maxisam/ngx-progressive-image-loader.svg?branch=master)](https://travis-ci.org/maxisam/ngx-progressive-image-loader)
+[![npm](https://img.shields.io/npm/dt/ngx-progressive-image-loader.svg?style=flat-square)](https://www.npmjs.com/package/ngx-progressive-image-loader)
+[![GitHub release](https://img.shields.io/github/release/maxisam/ngx-progressive-image-loader.svg?style=flat-square)](https://github.com/maxisam/ngx-progressive-image-loader/releases)
+[![npm](https://img.shields.io/npm/l/ngx-progressive-image-loader.svg?style=flat-square)]()
+
 # ngx-progressive-image-loader
 
 Support Angular >=6.0.0
