@@ -29,21 +29,33 @@
 </div>
 <ngx-progressive-image-loader>
   <ngx-image-placeholder>
-    <img src="./assets/Avengers1.jpg" alt="" ngxProgressiveImage>
+    <img src="/assets/Avengers1.jpg" alt="" ngxProgressiveImage>
   </ngx-image-placeholder>
   <ngx-image-placeholder>
-    <img src="./assets/Avengers2.jpg" alt="" ngxProgressiveImage>
+    <img src="/assets/Avengers2.jpg" alt="" ngxProgressiveImage>
   </ngx-image-placeholder>
   <ngx-image-placeholder>
-    <img src="./assets/Avengers3.jpg" alt="" ngxProgressiveImage>
+    <img src="/assets/Avengers3.jpg" alt="" ngxProgressiveImage>
   </ngx-image-placeholder>
-  <ngx-image-placeholder>
-    <img src="./assets/Avengers4.jpg" alt="" ngxProgressiveImage>
-  </ngx-image-placeholder>
+
 </ngx-progressive-image-loader>
 <p>
   <strong> The text after image doesn't reflow after image loaded.</strong>
 </p>
+<!-- <picture>
+  <source data-srcset="/assets/Avengers4.jpg" media="(max-width: 1000px)">
+  <source data-srcset="/assets/Avengers5.jpg" media="(min-width: 1000px)">
+  <img data-src="/assets/Avengers4.jpg" alt="My default image">
+</picture> -->
+<ngx-progressive-image-loader>
+  <ngx-image-placeholder>
+    <picture ngxProgressiveImage>
+      <source srcset="/assets/Avengers4.jpg" media="(max-width: 1000px)">
+      <source srcset="/assets/Avengers5.jpg" media="(min-width: 1000px)">
+      <img src="/assets/Avengers4.jpg" alt="My default image">
+    </picture>
+  </ngx-image-placeholder>
+</ngx-progressive-image-loader>
 <p class="lorem-ipsum">
   A bouch of text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
   magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
