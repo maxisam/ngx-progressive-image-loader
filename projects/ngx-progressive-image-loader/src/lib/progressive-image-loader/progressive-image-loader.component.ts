@@ -82,7 +82,8 @@ export class ProgressiveImageLoaderComponent implements OnInit, AfterContentInit
       if (image.dataset.src) {
         this._Renderer.setAttribute(image, 'src', image.dataset.src);
         this._Renderer.removeAttribute(image, 'data-src');
-      } else if (image.dataset.srcset) {
+      }
+      if (image.dataset.srcset) {
         this._Renderer.setAttribute(image, 'srcset', image.dataset.srcset);
         this._Renderer.removeAttribute(image, 'data-srcset');
       }

@@ -24,14 +24,15 @@ export class ProgressiveImageDirective implements OnInit {
           this.imageElement.onload = () => {
             this.imageElement.classList.add('loaded');
           };
+          if (this.imageElement.srcset) {
+            this.src = this.imageElement.srcset;
+            this._Renderer.removeAttribute(this.imageElement, 'srcset');
+            this._Renderer.setAttribute(this.imageElement, 'data-srcset', this.src);
+          }
           if (this.imageElement.src) {
             this.src = this.imageElement.src;
             this._Renderer.removeAttribute(this.imageElement, 'src');
             this._Renderer.setAttribute(this.imageElement, 'data-src', this.src);
-          } else {
-            this.src = this.imageElement.srcset;
-            this._Renderer.removeAttribute(this.imageElement, 'srcset');
-            this._Renderer.setAttribute(this.imageElement, 'data-srcset', this.src);
           }
         } else {
           const sourceElms = this.imageElement.children;
