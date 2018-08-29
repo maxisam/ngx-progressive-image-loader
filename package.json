@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build:l",
     "build:l": "ng build ngx-progressive-image-loader && npm run copy-scss && npm run copy-readme",
     "build:l:w": "ng build ngx-progressive-image-loader --watch",
     "publish:l": "npm publish ./dist/ngx-progressive-image-loader",
