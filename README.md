@@ -136,4 +136,6 @@ https://www.voorhoede.nl/en/blog/say-no-to-image-reflow/
 
 https://jmperezperez.com/medium-image-progressive-loading-placeholder/
 
+https://github.com/verlok/lazyload for detecting spider
+
 And my wife and my child to let me work on a weekend for this.
