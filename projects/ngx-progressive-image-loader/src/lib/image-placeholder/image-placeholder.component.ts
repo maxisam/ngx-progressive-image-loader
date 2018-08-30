@@ -31,7 +31,7 @@ export class ImagePlaceholderComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustStyle(`blur(${this._ProgressiveImageLoader.blurFilter}px)`);
   }
 
-  get safeLoadingImage() {
+  get safeLoadingImage(): SafeStyle {
     return this.sanitizer.bypassSecurityTrustUrl(
       this.loadingImageSrc || this._ProgressiveImageLoader.placeHolderImageSrc
     );
