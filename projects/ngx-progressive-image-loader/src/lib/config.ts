@@ -4,6 +4,8 @@ export interface IImageLoaderOptions extends IntersectionObserverInit {
   placeHolderImage?: string;
   imageRatio: number;
   blurFilter: number;
+  // if filter is set, it will override blurFilter
+  filter: string;
 }
 export const IMAGE_LOADER_CONFIG_TOKEN = new InjectionToken<IImageLoaderOptions>('Image loader Config');
 

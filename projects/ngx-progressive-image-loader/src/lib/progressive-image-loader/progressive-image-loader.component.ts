@@ -29,6 +29,8 @@ export class ProgressiveImageLoaderComponent implements OnInit, AfterContentInit
   // to define how blur the loading image is
   @Input()
   blurFilter: number;
+  @Input()
+  filter: string;
   // the src of loading image
   @Input()
   placeHolderImageSrc: string;
@@ -53,6 +55,9 @@ export class ProgressiveImageLoaderComponent implements OnInit, AfterContentInit
       }
       if (!this.blurFilter) {
         this.blurFilter = this._ConfigurationService.config.blurFilter;
+      }
+      if (!this.filter) {
+        this.filter = this._ConfigurationService.config.filter;
       }
       if (!this.placeHolderImageSrc) {
         this.placeHolderImageSrc = this._ConfigurationService.config.placeHolderImage;
