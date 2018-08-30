@@ -26,10 +26,10 @@
     "@angular/platform-browser-dynamic": "^6.1.6",
     "@angular/router": "^6.1.6",
     "ngx-window-token": "^1.0.0",
-    "core-js": "^2.5.4",
-    "rxjs": "^6.2.2",
+    "core-js": "^2.5.7",
+    "rxjs": "^6.3.0",
     "zone.js": "~0.8.26",
-    "ngx-progressive-image-loader": "^1.0.0"
+    "ngx-progressive-image-loader": "^1.1.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0-rc.0",
@@ -37,7 +37,7 @@
     "@angular/cli": "~6.2.0-rc.0",
     "@angular/compiler-cli": "^6.1.6",
     "@angular/language-service": "^6.1.6",
-    "@types/jasmine": "~2.8.6",
+    "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.4.4",

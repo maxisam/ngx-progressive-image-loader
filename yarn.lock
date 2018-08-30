@@ -1535,7 +1535,7 @@ copy-webpack-plugin@^4.5.2:
     p-limit "^1.0.0"
     serialize-javascript "^1.4.0"
 
-core-js@^2.2.0, core-js@^2.4.0, core-js@^2.5.4:
+core-js@^2.2.0, core-js@^2.4.0, core-js@^2.5.7:
   version "2.5.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.7.tgz#f972608ff0cead68b841a16a932d0b183791814e"
 
@@ -4266,9 +4266,9 @@ ng-packagr@^4.1.1:
     uglify-js "^3.0.7"
     update-notifier "^2.3.0"
 
-ngx-progressive-image-loader@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/ngx-progressive-image-loader/-/ngx-progressive-image-loader-1.0.0.tgz#9e5ca5a8d5253019842b6270caf800948b499171"
+ngx-progressive-image-loader@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ngx-progressive-image-loader/-/ngx-progressive-image-loader-1.1.0.tgz#1319e4ac35b1d5a7e6ab69c3b2f2b63f870c6482"
   dependencies:
     ngx-window-token "^1.0.0"
     tslib "^1.9.0"
@@ -5486,9 +5486,15 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rxjs@^6.0.0, rxjs@^6.2.2:
+rxjs@^6.0.0:
   version "6.2.2"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.2.2.tgz#eb75fa3c186ff5289907d06483a77884586e1cf9"
+  dependencies:
+    tslib "^1.9.0"
+
+rxjs@^6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.3.0.tgz#e55b05ad4bdf351db4b45756638dfa368260a8a3"
   dependencies:
     tslib "^1.9.0"
 
