@@ -1,5 +1,4 @@
 import {
-  AfterContentInit,
   Component,
   ContentChildren,
   ElementRef,
@@ -22,7 +21,7 @@ import { isSpider, isSupportIntersectionObserver, loadImage } from '../util';
   template: `<ng-content></ng-content>`,
   styles: []
 })
-export class ProgressiveImageLoaderComponent implements OnInit, AfterContentInit, OnDestroy {
+export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
   // define the placeholder height for all images inside this components
   @Input()
   imageRatio: number;
@@ -69,15 +68,13 @@ export class ProgressiveImageLoaderComponent implements OnInit, AfterContentInit
     }
   }
 
-  ngAfterContentInit() {
-    this.intersectionObserver && this.images.forEach(image => this.intersectionObserver.observe(image.imageElement));
-  }
-
   onIntersectionChanged(entries: IntersectionObserverEntry[], observer: IntersectionObserver) {
-    entries.forEach(entry => entry.isIntersecting && this.onImageAppearsInViewport(entry.target, observer));
+    entries.forEach(
+      entry => entry.isIntersecting && this.onImageAppearsInViewport(entry.target as HTMLImageElement, observer)
+    );
   }
 
-  onImageAppearsInViewport(image: Element, observer: IntersectionObserver) {
+  onImageAppearsInViewport(image: HTMLImageElement, observer: IntersectionObserver) {
     // Stop observing the current target
     observer.unobserve(image);
     loadImage(this._Renderer, image);

@@ -12,8 +12,7 @@
       transform: scale($placeholder-loading-image-scale);
       opacity: 1;
     }
-    & > img,
-    & > picture {
+    img {
       position: absolute;
       opacity: 0;
       top: 0;
