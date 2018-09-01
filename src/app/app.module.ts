@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IImageLoaderOptions, NgxProgressiveImageLoaderModule } from 'local-ngx-progressive-image-loader';
+import { IImageLoaderOptions, NgxProgressiveImageLoaderModule } from 'ngx-progressive-image-loader';
 
 import { AppComponent } from './app.component';
 
-// import { IImageLoaderOptions, NgxProgressiveImageLoaderModule } from 'ngx-progressive-image-loader';
+// import { IImageLoaderOptions, NgxProgressiveImageLoaderModule } from 'local-ngx-progressive-image-loader';
 
 @NgModule({
   declarations: [AppComponent],
