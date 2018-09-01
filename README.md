@@ -62,10 +62,10 @@ $scale: 0.5; // the scale of loading image in place holder
 ```html
 <ngx-progressive-image-loader>
   <ngx-image-placeholder>
-    <img [attr.data-src]="'/assets/Avengers1.jpg'" alt="" ngxProgressiveImage>
+    <img [src]="'/assets/Avengers1.jpg'" alt="" ngxProgressiveImage>
   </ngx-image-placeholder>
    <ngx-image-placeholder>
-    <img data-src="/assets/Avengers2.jpg" alt="" ngxProgressiveImage>
+    <img src="/assets/Avengers2.jpg" alt="" ngxProgressiveImage>
   </ngx-image-placeholder>
 </ngx-progressive-image-loader>
 ```
@@ -75,7 +75,7 @@ $scale: 0.5; // the scale of loading image in place holder
 ```html
 <ngx-progressive-image-loader>
   <ngx-image-placeholder>
-    <img [attr.data-src]="'/assets/Avengers6.jpg'" [attr.data-srcset]="'/assets/Avengers6.jpg 800w,/assets/Avengers7.jpg 1366w'"
+    <img [src]="'/assets/Avengers6.jpg'" [srcset]="'/assets/Avengers6.jpg 800w,/assets/Avengers7.jpg 1366w'"
       size="(max-width: 1000px) 100vw, 100vw" ngxProgressiveImage>
   </ngx-image-placeholder>
 </ngx-progressive-image-loader>
@@ -87,9 +87,9 @@ $scale: 0.5; // the scale of loading image in place holder
 <ngx-progressive-image-loader>
   <ngx-image-placeholder>
     <picture ngxProgressiveImage>
-      <source [attr.data-srcset]="'/assets/Avengers4.jpg'" media="(max-width: 1000px)">
-      <source [attr.data-srcset]="'/assets/Avengers5.jpg'" media="(min-width: 1000px)">
-      <img [attr.data-src]="'/assets/Avengers4.jpg'" alt="My default image">
+      <source [srcset]="'/assets/Avengers4.jpg'" media="(max-width: 1000px)">
+      <source [srcset]="'/assets/Avengers5.jpg'" media="(min-width: 1000px)">
+      <img [src]="'/assets/Avengers4.jpg'" alt="My default image">
     </picture>
   </ngx-image-placeholder>
 </ngx-progressive-image-loader>
@@ -118,6 +118,18 @@ $scale: 0.5; // the scale of loading image in place holder
   src for loading image. It works just like src, takes base64 or url.
 
 For `ngx-image-placeholder` directive, it takes
+
+- imageRatio
+
+- placeHolderImageSrc
+
+For `ngx-progressive-image-loader` directive, it takes
+
+- imageRatio
+
+- placeHolderImageSrc
+
+- filter / blurFilter
 
 ## Build project
 
