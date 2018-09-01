@@ -26,15 +26,13 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
   ngOnInit(): void {
     this.imageElement = this._ElementRef.nativeElement;
     // only image element need to be observe and have onload event
-    if (
-      isSupportIntersectionObserver(this.window) &&
-      !isSpider(this.window) &&
-      this.imageElement instanceof HTMLImageElement
-    ) {
+    if (isSupportIntersectionObserver(this.window) && !isSpider(this.window)) {
       this.isObserve = true;
-      this.imageElement.onload = () => {
-        this.imageElement.classList.add('loaded');
-      };
+      if (this.imageElement instanceof HTMLImageElement) {
+        this.imageElement.onload = () => {
+          this.imageElement.classList.add('loaded');
+        };
+      }
     } else {
       // show image directly
       loadImage(this._Renderer, this.imageElement);
