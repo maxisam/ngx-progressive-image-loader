@@ -42,7 +42,7 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
         this.filter = this._ConfigurationService.config.filter;
       }
       if (!this.placeHolderImageSrc) {
-        this.placeHolderImageSrc = this._ConfigurationService.config.placeHolderImage;
+        this.placeHolderImageSrc = this._ConfigurationService.config.placeHolderImageSrc;
       }
       this.intersectionObserver = new IntersectionObserver(
         this.onIntersectionChanged.bind(this),
