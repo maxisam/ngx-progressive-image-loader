@@ -31,27 +31,26 @@
 <h2>img Element</h2>
 <ngx-progressive-image-loader filter="blur(3px) drop-shadow(0 0 2.75rem green)">
   <ngx-image-placeholder [imageRatio]="2000/1295">
-    <img [attr.data-src]="'/assets/Avengers1.jpg'" alt="" ngxProgressiveImage>
+    <img [src]="'/assets/Avengers1.jpg'" alt="" ngxProgressiveImage>
   </ngx-image-placeholder>
-  <ngx-image-placeholder [imageRatio]="1920/1080">
-    <img data-src="/assets/Avengers2.jpg" alt="" ngxProgressiveImage>
+  <ngx-image-placeholder [imageRatio]="1920/1080" placeHolderImageSrc="./assets/loading.png">
+    <img [src]="'/assets/Avengers2.jpg'" alt="" ngxProgressiveImage>
   </ngx-image-placeholder>
-  <button (click)="onImageSwitch()">Switch Image</button> (Only use [src] will get data-binding)
+  <button (click)="onImageSwitch()">Switch Image</button>
   <ngx-image-placeholder>
     <img [src]="image3" alt="" ngxProgressiveImage>
   </ngx-image-placeholder>
 </ngx-progressive-image-loader>
-<button (click)="onImageSetSwitch()">Switch Image</button> (Only use [src] will get data-binding)
+<button (click)="onImageSetSwitch()">Switch Image</button>
 <h2>img srcset Element</h2>
 <ngx-progressive-image-loader filter="blur(3px) drop-shadow(0 0 0.75rem crimson)">
   <ngx-image-placeholder>
-    <img [src]="image6" [srcset]="image6 + ' 800w,' + image7 + ' 1366w' " size="(max-width: 1000px) 100vw, 100vw"
-      ngxProgressiveImage>
+    <img [src]="image6" [srcset]="image6 + ' 800w,' + image7 + ' 1366w' " size="(max-width: 1000px) 100vw, 100vw" ngxProgressiveImage>
   </ngx-image-placeholder>
 </ngx-progressive-image-loader>
 
 <h2>Picture Element</h2>
-<button (click)="onPictureSwitch()">Switch Image</button> (Only use [src] will get data-binding)
+<button (click)="onPictureSwitch()">Switch Image</button>
 <ngx-progressive-image-loader filter="blur(3px) drop-shadow(0 0 0.75rem crimson)" [imageRatio]="1777/999">
   <ngx-image-placeholder>
     <picture>
