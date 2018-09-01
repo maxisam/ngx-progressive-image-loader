@@ -1,25 +1,12 @@
-import {
-  Component,
-  ContentChildren,
-  ElementRef,
-  Inject,
-  Input,
-  OnDestroy,
-  OnInit,
-  PLATFORM_ID,
-  QueryList,
-  Renderer2,
-} from '@angular/core';
+import { Component, ElementRef, Inject, Input, OnDestroy, OnInit, PLATFORM_ID, Renderer2 } from '@angular/core';
 import { WINDOW } from 'ngx-window-token';
 
 import { ConfigurationService } from '../configuration.service';
-import { ProgressiveImageDirective } from '../progressive-image/progressive-image.directive';
 import { isSpider, isSupportIntersectionObserver, loadImage } from '../util';
 
 @Component({
   selector: 'ngx-progressive-image-loader',
-  template: `<ng-content></ng-content>`,
-  styles: []
+  template: `<ng-content></ng-content>`
 })
 export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
   // define the placeholder height for all images inside this components
@@ -33,10 +20,6 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
   // the src of loading image
   @Input()
   placeHolderImageSrc: string;
-  // get all ProgressiveImageDirective that might be wrapped in image placeholders
-  @ContentChildren(ProgressiveImageDirective, { descendants: true })
-  images: QueryList<ProgressiveImageDirective>;
-
   intersectionObserver: IntersectionObserver;
 
   constructor(
