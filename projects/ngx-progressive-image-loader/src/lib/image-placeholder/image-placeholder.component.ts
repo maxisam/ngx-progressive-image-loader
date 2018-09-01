@@ -25,7 +25,7 @@ export class ImagePlaceholderComponent implements OnInit {
   imageRatio: number;
   // a loading image showing before the real image is loaded
   @Input()
-  loadingImageSrc: string;
+  placeHolderImageSrc: string;
 
   get imageFilter(): SafeStyle {
     if (!this._ProgressiveImageLoader.filter) {
@@ -36,7 +36,7 @@ export class ImagePlaceholderComponent implements OnInit {
 
   get safeLoadingImage(): SafeStyle {
     return this.sanitizer.bypassSecurityTrustUrl(
-      this.loadingImageSrc || this._ProgressiveImageLoader.placeHolderImageSrc
+      this.placeHolderImageSrc || this._ProgressiveImageLoader.placeHolderImageSrc
     );
   }
 

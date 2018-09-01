@@ -1,4 +1,5 @@
 @import '~ngx-progressive-image-loader/ngx-progressive-image-loader';
 // @import 'dist/ngx-progressive-image-loader/ngx-progressive-image-loader';
 
-@include progressive-image-loader(0.5);
+$loading-image-scale: 0.5;
+@include progressive-image-loader($loading-image-scale);

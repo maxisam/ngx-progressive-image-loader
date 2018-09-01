@@ -1,28 +1,14 @@
-import {
-  AfterContentInit,
-  Component,
-  ContentChildren,
-  ElementRef,
-  Inject,
-  Input,
-  OnDestroy,
-  OnInit,
-  PLATFORM_ID,
-  QueryList,
-  Renderer2,
-} from '@angular/core';
+import { Component, ElementRef, Inject, Input, OnDestroy, OnInit, PLATFORM_ID, Renderer2 } from '@angular/core';
 import { WINDOW } from 'ngx-window-token';
 
 import { ConfigurationService } from '../configuration.service';
-import { ProgressiveImageDirective } from '../progressive-image/progressive-image.directive';
 import { isSpider, isSupportIntersectionObserver, loadImage } from '../util';
 
 @Component({
   selector: 'ngx-progressive-image-loader',
-  template: `<ng-content></ng-content>`,
-  styles: []
+  template: `<ng-content></ng-content>`
 })
-export class ProgressiveImageLoaderComponent implements OnInit, AfterContentInit, OnDestroy {
+export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
   // define the placeholder height for all images inside this components
   @Input()
   imageRatio: number;
@@ -34,10 +20,6 @@ export class ProgressiveImageLoaderComponent implements OnInit, AfterContentInit
   // the src of loading image
   @Input()
   placeHolderImageSrc: string;
-  // get all ProgressiveImageDirective that might be wrapped in image placeholders
-  @ContentChildren(ProgressiveImageDirective, { descendants: true })
-  images: QueryList<ProgressiveImageDirective>;
-
   intersectionObserver: IntersectionObserver;
 
   constructor(
@@ -60,7 +42,7 @@ export class ProgressiveImageLoaderComponent implements OnInit, AfterContentInit
         this.filter = this._ConfigurationService.config.filter;
       }
       if (!this.placeHolderImageSrc) {
-        this.placeHolderImageSrc = this._ConfigurationService.config.placeHolderImage;
+        this.placeHolderImageSrc = this._ConfigurationService.config.placeHolderImageSrc;
       }
       this.intersectionObserver = new IntersectionObserver(
         this.onIntersectionChanged.bind(this),
@@ -69,15 +51,13 @@ export class ProgressiveImageLoaderComponent implements OnInit, AfterContentInit
     }
   }
 
-  ngAfterContentInit() {
-    this.intersectionObserver && this.images.forEach(image => this.intersectionObserver.observe(image.imageElement));
-  }
-
   onIntersectionChanged(entries: IntersectionObserverEntry[], observer: IntersectionObserver) {
-    entries.forEach(entry => entry.isIntersecting && this.onImageAppearsInViewport(entry.target, observer));
+    entries.forEach(
+      entry => entry.isIntersecting && this.onImageAppearsInViewport(entry.target as HTMLImageElement, observer)
+    );
   }
 
-  onImageAppearsInViewport(image: Element, observer: IntersectionObserver) {
+  onImageAppearsInViewport(image: HTMLImageElement, observer: IntersectionObserver) {
     // Stop observing the current target
     observer.unobserve(image);
     loadImage(this._Renderer, image);
