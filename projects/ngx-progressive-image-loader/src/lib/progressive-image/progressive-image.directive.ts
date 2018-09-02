@@ -25,10 +25,12 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
   ) {}
   ngOnInit(): void {
     this.imageElement = this._ElementRef.nativeElement;
-    // only image element need to be observe and have onload event
     if (isSupportIntersectionObserver(this.window) && !isSpider(this.window)) {
-      this.isObserve = true;
+      // only image element need to be observe and have onload event
       if (this.imageElement instanceof HTMLImageElement) {
+        this.isObserve = true;
+        this.ProgressiveImageLoader = this._Injector.get(ProgressiveImageLoaderComponent);
+        this.ProgressiveImageLoader.intersectionObserver.observe(this.imageElement);
         this.imageElement.onload = () => {
           this.imageElement.classList.add('loaded');
         };
@@ -39,9 +41,6 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
     }
     this.setDataSrc('data-src', this.src);
     this.setDataSrc('data-srcset', this.srcset);
-
-    this.ProgressiveImageLoader = this._Injector.get(ProgressiveImageLoaderComponent);
-    this.isObserve && this.ProgressiveImageLoader.intersectionObserver.observe(this.imageElement);
   }
   ngOnChanges(changes: SimpleChanges): void {
     changes.src && !changes.src.isFirstChange() && this.setDataSrc('data-src', this.src);
