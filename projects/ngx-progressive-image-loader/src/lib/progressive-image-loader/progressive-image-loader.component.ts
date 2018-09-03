@@ -1,3 +1,4 @@
+import { isPlatformBrowser } from '@angular/common';
 import { Component, ElementRef, Inject, Input, OnDestroy, OnInit, PLATFORM_ID, Renderer2 } from '@angular/core';
 import { WINDOW } from 'ngx-window-token';
 
@@ -12,14 +13,12 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
   // define the placeholder height for all images inside this components
   @Input()
   imageRatio: number;
-  // to define how blur the loading image is
-  @Input()
-  blurFilter: number;
+
   @Input()
   filter: string;
   // the src of loading image
   @Input()
-  placeHolderImageSrc: string;
+  placeholderImageSrc: string;
   intersectionObserver: IntersectionObserver;
 
   constructor(
@@ -31,18 +30,16 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    if (isSupportIntersectionObserver(this.window) && !isSpider(this.window)) {
+    if (isSupportIntersectionObserver(this.window) && !isSpider(this.window) && isPlatformBrowser(this.platformId)) {
       if (!this.imageRatio) {
         this.imageRatio = this._ConfigurationService.config.imageRatio;
       }
-      if (!this.blurFilter) {
-        this.blurFilter = this._ConfigurationService.config.blurFilter;
-      }
+
       if (!this.filter) {
         this.filter = this._ConfigurationService.config.filter;
       }
-      if (!this.placeHolderImageSrc) {
-        this.placeHolderImageSrc = this._ConfigurationService.config.placeHolderImageSrc;
+      if (!this.placeholderImageSrc) {
+        this.placeholderImageSrc = this._ConfigurationService.config.placeholderImageSrc;
       }
       this.intersectionObserver = new IntersectionObserver(
         this.onIntersectionChanged.bind(this),
@@ -62,6 +59,7 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
     observer.unobserve(image);
     loadImage(this._Renderer, image);
   }
+
   ngOnDestroy(): void {
     this.intersectionObserver && this.intersectionObserver.disconnect();
   }

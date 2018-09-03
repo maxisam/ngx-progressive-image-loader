@@ -25,18 +25,15 @@ export class ImagePlaceholderComponent implements OnInit {
   imageRatio: number;
   // a loading image showing before the real image is loaded
   @Input()
-  placeHolderImageSrc: string;
+  placeholderImageSrc: string;
 
   get imageFilter(): SafeStyle {
-    if (!this._ProgressiveImageLoader.filter) {
-      return this.sanitizer.bypassSecurityTrustStyle(`blur(${this._ProgressiveImageLoader.blurFilter}px)`);
-    }
     return this.sanitizer.bypassSecurityTrustStyle(`${this._ProgressiveImageLoader.filter}`);
   }
 
   get safeLoadingImage(): SafeStyle {
     return this.sanitizer.bypassSecurityTrustUrl(
-      this.placeHolderImageSrc || this._ProgressiveImageLoader.placeHolderImageSrc
+      this.placeholderImageSrc || this._ProgressiveImageLoader.placeholderImageSrc
     );
   }
 
