@@ -47,7 +47,7 @@ imports: [
       // image width / height ratio for image holder
       imageRatio: 16 / 9,
       // loading image in placeholder. Can be URL or base64
-      placeHolderImage:
+      placeholderImageSrc:
         // tslint:disable-next-line:max-line-length
         'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICA8cGF0aCBmaWxsPSIjZGQwMDMxIiBkPSJNMTI1IDMwTDMxLjkgNjMuMmwxNC4yIDEyMy4xTDEyNSAyMzBsNzguOS00My43IDE0LjItMTIzLjF6Ii8+CiAgPHBhdGggZmlsbD0iI2MzMDAyZiIgZD0iTTEyNSAzMHYyMi4yLS4xVjIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMUwxMjUgMzB6Ii8+CiAgPHBhdGggZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPgo='
     })
@@ -70,12 +70,10 @@ $scale: 0.5; // the scale of loading image in place holder
 
 ```html
 <ngx-progressive-image-loader>
-  <ngx-image-placeholder>
+  <ngx-image-placeholder> <!-- ngx-image-placeholder is optional -->
     <img [src]="'/assets/Avengers1.jpg'" alt="" ngxProgressiveImage>
   </ngx-image-placeholder>
-   <ngx-image-placeholder>
-    <img src="/assets/Avengers2.jpg" alt="" ngxProgressiveImage>
-  </ngx-image-placeholder>
+  <img src="/assets/Avengers2.jpg" alt="" ngxProgressiveImage>
 </ngx-progressive-image-loader>
 ```
 
@@ -83,10 +81,8 @@ $scale: 0.5; // the scale of loading image in place holder
 
 ```html
 <ngx-progressive-image-loader>
-  <ngx-image-placeholder>
-    <img [src]="'/assets/Avengers6.jpg'" [srcset]="'/assets/Avengers6.jpg 800w,/assets/Avengers7.jpg 1366w'"
+  <img [src]="'/assets/Avengers6.jpg'" [srcset]="'/assets/Avengers6.jpg 800w,/assets/Avengers7.jpg 1366w'"
       size="(max-width: 1000px) 100vw, 100vw" ngxProgressiveImage>
-  </ngx-image-placeholder>
 </ngx-progressive-image-loader>
 ```
 
@@ -94,13 +90,11 @@ $scale: 0.5; // the scale of loading image in place holder
 
 ```html
 <ngx-progressive-image-loader>
-  <ngx-image-placeholder>
-    <picture ngxProgressiveImage>
-      <source [srcset]="'/assets/Avengers4.jpg'" media="(max-width: 1000px)">
-      <source [srcset]="'/assets/Avengers5.jpg'" media="(min-width: 1000px)">
-      <img [src]="'/assets/Avengers4.jpg'" alt="My default image">
-    </picture>
-  </ngx-image-placeholder>
+  <picture ngxProgressiveImage>
+    <source [srcset]="'/assets/Avengers4.jpg'" media="(max-width: 1000px)">
+    <source [srcset]="'/assets/Avengers5.jpg'" media="(min-width: 1000px)">
+    <img [src]="'/assets/Avengers4.jpg'" alt="My default image">
+  </picture>
 </ngx-progressive-image-loader>
 ```
 
@@ -131,19 +125,29 @@ $scale: 0.5; // the scale of loading image in place holder
 
   image width / height
 
-For `ngx-image-placeholder` directive, it takes
+For `ngx-image-placeholder` component, it takes
 
 - imageRatio
 
 - placeholderImageSrc
 
-For `ngx-progressive-image-loader` directive, it takes
+(after 3.0.0, you can set imageRatio and placeholderImageSrc directly on `ngxProgressiveImage` and spare ngx-image-placeholder layer)
+
+For `ngx-progressive-image-loader` component, it takes
 
 - imageRatio
 
 - placeholderImageSrc
 
 - filter
+
+For `ngxProgressiveImage` directive, (only for image or source elements)
+
+- imageRatio
+
+- placeholderImageSrc
+
+- noPlaceholder: boolean; default to `false`, set to `true` will skip image placeholder
 
 ## Build project
 
