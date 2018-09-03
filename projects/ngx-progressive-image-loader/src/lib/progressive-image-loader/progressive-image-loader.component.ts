@@ -1,3 +1,4 @@
+import { isPlatformBrowser } from '@angular/common';
 import { Component, ElementRef, Inject, Input, OnDestroy, OnInit, PLATFORM_ID, Renderer2 } from '@angular/core';
 import { WINDOW } from 'ngx-window-token';
 
@@ -29,7 +30,7 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    if (isSupportIntersectionObserver(this.window) && !isSpider(this.window)) {
+    if (isSupportIntersectionObserver(this.window) && !isSpider(this.window) && isPlatformBrowser(this.platformId)) {
       if (!this.imageRatio) {
         this.imageRatio = this._ConfigurationService.config.imageRatio;
       }
@@ -58,6 +59,7 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
     observer.unobserve(image);
     loadImage(this._Renderer, image);
   }
+
   ngOnDestroy(): void {
     this.intersectionObserver && this.intersectionObserver.disconnect();
   }

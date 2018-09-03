@@ -4,7 +4,7 @@ import { WINDOW } from 'ngx-window-token';
 import { ConfigurationService } from '../configuration.service';
 import { ImagePlaceholderComponent } from '../image-placeholder/image-placeholder.component';
 import { ProgressiveImageLoaderComponent } from '../progressive-image-loader/progressive-image-loader.component';
-import { isPictureElement, isSpider, isSupportIntersectionObserver, loadImage } from '../util';
+import { isPictureElement, loadImage } from '../util';
 
 @Directive({
   // make sure the element is an image element
@@ -54,7 +54,9 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
   ) {}
   ngOnInit(): void {
     this.imageElement = this._ElementRef.nativeElement;
-    if (isSupportIntersectionObserver(this.window) && !isSpider(this.window)) {
+    this.setDataSrc('data-src', this.src);
+    this.setDataSrc('data-srcset', this.srcset);
+    if (this._ProgressiveImageLoader.intersectionObserver) {
       // only image element need to be observe and have onload event
       if (this.imageElement instanceof HTMLImageElement) {
         this.isObserve = true;
@@ -71,8 +73,6 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
       // show image directly
       loadImage(this._Renderer, this.imageElement);
     }
-    this.setDataSrc('data-src', this.src);
-    this.setDataSrc('data-srcset', this.srcset);
   }
   ngOnChanges(changes: SimpleChanges): void {
     changes.src && !changes.src.isFirstChange() && this.setDataSrc('data-src', this.src);
