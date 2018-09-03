@@ -1,7 +1,8 @@
-import { Directive, ElementRef, Inject, Injector, Input, OnChanges, OnInit, Renderer2, SimpleChanges } from '@angular/core';
+import { Directive, ElementRef, Inject, Input, OnChanges, OnInit, Optional, Renderer2, SimpleChanges } from '@angular/core';
 import { WINDOW } from 'ngx-window-token';
 
 import { ConfigurationService } from '../configuration.service';
+import { ImagePlaceholderComponent } from '../image-placeholder/image-placeholder.component';
 import { ProgressiveImageLoaderComponent } from '../progressive-image-loader/progressive-image-loader.component';
 import { isPictureElement, isSpider, isSupportIntersectionObserver, loadImage } from '../util';
 
@@ -17,7 +18,7 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
     this._imageRatio = value;
   }
   get imageRatio() {
-    return this._imageRatio || this.ProgressiveImageLoader.imageRatio;
+    return this._imageRatio || this._ProgressiveImageLoader.imageRatio;
   }
 
   // a loading image showing before the real image is loaded
@@ -28,7 +29,7 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
   }
 
   get placeholderImageSrc(): string {
-    return this._placeholderImageSrc || this.ProgressiveImageLoader.placeholderImageSrc;
+    return this._placeholderImageSrc || this._ProgressiveImageLoader.placeholderImageSrc;
   }
 
   @Input()
@@ -36,15 +37,20 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
   // tslint:disable-next-line:no-input-rename
   @Input()
   srcset: string;
+
+  @Input()
+  noPlaceholder = false;
   imageElement: HTMLImageElement;
   isObserve = false;
-  ProgressiveImageLoader: ProgressiveImageLoaderComponent;
   constructor(
     private _ElementRef: ElementRef,
     public _Renderer: Renderer2,
     @Inject(WINDOW) private window: any,
-    private _Injector: Injector,
-    public _ConfigurationService: ConfigurationService
+    public _ConfigurationService: ConfigurationService,
+    @Optional()
+    @Inject(ImagePlaceholderComponent)
+    private _ImagePlaceholder: ImagePlaceholderComponent,
+    @Inject(ProgressiveImageLoaderComponent) private _ProgressiveImageLoader: ProgressiveImageLoaderComponent
   ) {}
   ngOnInit(): void {
     this.imageElement = this._ElementRef.nativeElement;
@@ -52,13 +58,14 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
       // only image element need to be observe and have onload event
       if (this.imageElement instanceof HTMLImageElement) {
         this.isObserve = true;
-        this.ProgressiveImageLoader = this._Injector.get(ProgressiveImageLoaderComponent);
-        this.ProgressiveImageLoader.intersectionObserver.observe(this.imageElement);
+        this._ProgressiveImageLoader.intersectionObserver.observe(this.imageElement);
 
         this.imageElement.onload = () => {
           this.imageElement.classList.add('loaded');
         };
-        this.setPlaceholder();
+        if (!this._ImagePlaceholder && !this.noPlaceholder) {
+          this.setPlaceholder();
+        }
       }
     } else {
       // show image directly
@@ -75,8 +82,8 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
       this.isObserve &&
       ((changes.src && !changes.src.isFirstChange()) || (changes.srcset && !changes.srcset.isFirstChange()))
     ) {
-      this.ProgressiveImageLoader.intersectionObserver.unobserve(this.imageElement);
-      this.ProgressiveImageLoader.intersectionObserver.observe(this.imageElement);
+      this._ProgressiveImageLoader.intersectionObserver.unobserve(this.imageElement);
+      this._ProgressiveImageLoader.intersectionObserver.observe(this.imageElement);
     }
   }
   setDataSrc(attr: string, value: string) {
@@ -110,7 +117,7 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
   createPlaceholderImage() {
     const img = new Image();
     img.classList.add('placeholder-loading-image');
-    img.style.filter = this.ProgressiveImageLoader.filter;
+    img.style.filter = this._ProgressiveImageLoader.filter;
     img.src = this.placeholderImageSrc;
     return img;
   }
