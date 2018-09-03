@@ -28,9 +28,6 @@ export class ImagePlaceholderComponent implements OnInit {
   placeholderImageSrc: string;
 
   get imageFilter(): SafeStyle {
-    if (!this._ProgressiveImageLoader.filter) {
-      return this.sanitizer.bypassSecurityTrustStyle(`blur(${this._ProgressiveImageLoader.blurFilter}px)`);
-    }
     return this.sanitizer.bypassSecurityTrustStyle(`${this._ProgressiveImageLoader.filter}`);
   }
 

@@ -12,9 +12,7 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
   // define the placeholder height for all images inside this components
   @Input()
   imageRatio: number;
-  // to define how blur the loading image is
-  @Input()
-  blurFilter: number;
+
   @Input()
   filter: string;
   // the src of loading image
@@ -35,9 +33,7 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
       if (!this.imageRatio) {
         this.imageRatio = this._ConfigurationService.config.imageRatio;
       }
-      if (!this.blurFilter) {
-        this.blurFilter = this._ConfigurationService.config.blurFilter;
-      }
+
       if (!this.filter) {
         this.filter = this._ConfigurationService.config.filter;
       }
