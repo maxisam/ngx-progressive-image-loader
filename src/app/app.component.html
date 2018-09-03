@@ -30,16 +30,12 @@
 
 <h2>img Element</h2>
 <ngx-progressive-image-loader filter="blur(3px) drop-shadow(0 0 2.75rem green)" placeholderImageSrc="./assets/loading.png">
-
-  <img [src]="'/assets/Avengers1.jpg'" alt="" ngxProgressiveImage [imageRatio]="2000/1295">
-
-
+  <ngx-image-placeholder [imageRatio]="2000/1295">
+    <img [src]="'/assets/Avengers1.jpg'" alt="" ngxProgressiveImage>
+  </ngx-image-placeholder>
   <img [src]="'/assets/Avengers2.jpg'" alt="" ngxProgressiveImage [imageRatio]="1920/1080" placeholderImageSrc="./assets/loading.png">
-
   <button (click)="onImageSwitch()">Switch Image</button>
-
   <img [src]="image3" alt="" ngxProgressiveImage>
-
 </ngx-progressive-image-loader>
 <button (click)="onImageSetSwitch()">Switch Image</button>
 <h2>img srcset Element</h2>
