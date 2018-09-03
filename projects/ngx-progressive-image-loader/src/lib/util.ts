@@ -17,9 +17,11 @@ export function setAttribute(renderer: Renderer2, attribute: string, element: HT
   // maybe doesn't matter
   // renderer.removeAttribute(element, 'data-' + attribute);
 }
-
+export function isPictureElement(element: HTMLElement) {
+  return element.nodeName === 'PICTURE';
+}
 export function loadImage(renderer: Renderer2, image: HTMLImageElement) {
-  if (image.parentElement.nodeName === 'PICTURE') {
+  if (isPictureElement(image.parentElement)) {
     const sourceElms = image.parentElement.children;
     for (let index = 0; index < sourceElms.length; index++) {
       const element = sourceElms[index];
