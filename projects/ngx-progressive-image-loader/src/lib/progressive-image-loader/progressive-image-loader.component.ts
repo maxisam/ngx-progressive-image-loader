@@ -19,7 +19,7 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
   filter: string;
   // the src of loading image
   @Input()
-  placeHolderImageSrc: string;
+  placeholderImageSrc: string;
   intersectionObserver: IntersectionObserver;
 
   constructor(
@@ -41,8 +41,8 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
       if (!this.filter) {
         this.filter = this._ConfigurationService.config.filter;
       }
-      if (!this.placeHolderImageSrc) {
-        this.placeHolderImageSrc = this._ConfigurationService.config.placeHolderImageSrc;
+      if (!this.placeholderImageSrc) {
+        this.placeholderImageSrc = this._ConfigurationService.config.placeholderImageSrc;
       }
       this.intersectionObserver = new IntersectionObserver(
         this.onIntersectionChanged.bind(this),

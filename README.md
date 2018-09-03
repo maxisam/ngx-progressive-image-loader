@@ -127,7 +127,7 @@ $scale: 0.5; // the scale of loading image in place holder
 
   If you want to set more [filter](https://developer.mozilla.org/en-US/docs/Web/CSS/filter). It uses the input string as css filter.
 
-- placeHolderImageSrc
+- placeholderImageSrc
 
   src for loading image. It works just like src, takes base64 or url.
 
@@ -139,13 +139,13 @@ For `ngx-image-placeholder` directive, it takes
 
 - imageRatio
 
-- placeHolderImageSrc
+- placeholderImageSrc
 
 For `ngx-progressive-image-loader` directive, it takes
 
 - imageRatio
 
-- placeHolderImageSrc
+- placeholderImageSrc
 
 - filter / blurFilter
 

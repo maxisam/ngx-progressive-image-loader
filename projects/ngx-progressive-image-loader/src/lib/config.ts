@@ -1,7 +1,7 @@
 import { InjectionToken } from '@angular/core';
 
 export interface IImageLoaderOptions extends IntersectionObserverInit {
-  placeHolderImageSrc?: string;
+  placeholderImageSrc?: string;
   imageRatio: number;
   blurFilter?: number;
   // if filter is set, it will override blurFilter
@@ -14,5 +14,5 @@ export const DEFAULT_IMAGE_LOADER_OPTIONS = <IImageLoaderOptions>{
   rootMargin: '10px',
   threshold: 0.1,
   imageRatio: 16 / 9,
-  placeHolderImageSrc: ''
+  placeholderImageSrc: ''
 };

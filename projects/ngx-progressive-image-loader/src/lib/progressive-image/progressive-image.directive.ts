@@ -28,7 +28,7 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
   }
 
   get placeholderImageSrc(): string {
-    return this._placeholderImageSrc || this.ProgressiveImageLoader.placeHolderImageSrc;
+    return this._placeholderImageSrc || this.ProgressiveImageLoader.placeholderImageSrc;
   }
 
   @Input()
