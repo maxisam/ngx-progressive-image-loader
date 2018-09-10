@@ -194,3 +194,7 @@ https://jmperezperez.com/medium-image-progressive-loading-placeholder/
 https://github.com/verlok/lazyload for detecting spider
 
 And my wife and my child to let me work on a weekend for this.
+
+<img src="https://www.browserstack.com/images/layout/browserstack-logo-600x315.png" height="80" title="BrowserStack Logo" alt="BrowserStack Logo" />
+
+Big thanks to [BrowserStack](https://www.browserstack.com) for letting the maintainers use their service to debug browser issues.
