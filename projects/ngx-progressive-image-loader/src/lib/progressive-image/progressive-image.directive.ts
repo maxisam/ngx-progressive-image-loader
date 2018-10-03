@@ -72,6 +72,7 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
     } else {
       // show image directly
       loadImage(this._Renderer, this.imageElement);
+      this.imageElement.classList.add('loaded');
     }
   }
   ngOnChanges(changes: SimpleChanges): void {
