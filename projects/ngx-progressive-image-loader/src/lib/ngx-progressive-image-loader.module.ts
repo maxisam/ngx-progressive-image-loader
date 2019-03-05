@@ -1,5 +1,4 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { NgxWindowTokenModule } from 'ngx-window-token';
 
 import { IImageLoaderOptions, IMAGE_LOADER_CONFIG_TOKEN } from './config';
 import { ConfigurationService } from './configuration.service';
@@ -11,7 +10,7 @@ export function ConfigurationServiceFactory(options: IImageLoaderOptions) {
   return new ConfigurationService(options);
 }
 @NgModule({
-  imports: [NgxWindowTokenModule],
+  imports: [],
   declarations: [ProgressiveImageLoaderComponent, ProgressiveImageDirective, ImagePlaceholderComponent],
   exports: [ProgressiveImageLoaderComponent, ProgressiveImageDirective, ImagePlaceholderComponent]
 })
