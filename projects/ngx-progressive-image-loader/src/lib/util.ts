@@ -2,6 +2,7 @@ import { Renderer2 } from '@angular/core';
 
 export function isSupportIntersectionObserver(window) {
   return (
+    window &&
     'IntersectionObserver' in window &&
     'IntersectionObserverEntry' in window &&
     'intersectionRatio' in window.IntersectionObserverEntry.prototype
