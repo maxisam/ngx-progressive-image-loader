@@ -13,7 +13,11 @@ export function isImagePicture(element: HTMLElement) {
   return element instanceof HTMLImageElement || element instanceof HTMLPictureElement;
 }
 
-export function setAttribute(renderer: Renderer2, attribute: string, element: HTMLImageElement | HTMLSourceElement) {
+export function setAttribute(
+  renderer: Renderer2,
+  attribute: string,
+  element: HTMLImageElement | HTMLSourceElement
+) {
   renderer.setAttribute(element, attribute, element.dataset[attribute]);
   // maybe doesn't matter
   // renderer.removeAttribute(element, 'data-' + attribute);
@@ -43,5 +47,6 @@ export function loadImage(renderer: Renderer2, image: HTMLImageElement) {
 }
 
 export function isSpider(window) {
-  (window && !('onscroll' in window)) || /(gle|ing|ro)bot|crawl|spider/i.test(window.navigator.userAgent);
+  (window && !('onscroll' in window)) ||
+    /(gle|ing|ro)bot|crawl|spider/i.test(window.navigator.userAgent);
 }

@@ -11,9 +11,8 @@ describe('ProgressiveImageLoaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProgressiveImageLoaderComponent ]
-    })
-    .compileComponents();
+      declarations: [ProgressiveImageLoaderComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -11,9 +11,8 @@ describe('ImagePlaceholderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImagePlaceholderComponent ]
-    })
-    .compileComponents();
+      declarations: [ImagePlaceholderComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

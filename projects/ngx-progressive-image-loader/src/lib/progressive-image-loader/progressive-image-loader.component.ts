@@ -1,5 +1,14 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, ElementRef, Inject, Input, OnDestroy, OnInit, PLATFORM_ID, Renderer2 } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  Input,
+  OnDestroy,
+  OnInit,
+  PLATFORM_ID,
+  Renderer2
+} from '@angular/core';
 import { WINDOW } from 'ngx-window-token';
 
 import { ConfigurationService } from '../configuration.service';
@@ -7,7 +16,9 @@ import { isSpider, isSupportIntersectionObserver, loadImage } from '../util';
 
 @Component({
   selector: 'ngx-progressive-image-loader',
-  template: `<ng-content></ng-content>`
+  template: `
+    <ng-content></ng-content>
+  `
 })
 export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
   // define the placeholder height for all images inside this components
@@ -30,7 +41,11 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    if (isSupportIntersectionObserver(this.window) && !isSpider(this.window) && isPlatformBrowser(this.platformId)) {
+    if (
+      isSupportIntersectionObserver(this.window) &&
+      !isSpider(this.window) &&
+      isPlatformBrowser(this.platformId)
+    ) {
       if (!this.imageRatio) {
         this.imageRatio = this._ConfigurationService.config.imageRatio;
       }
@@ -50,7 +65,9 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
 
   onIntersectionChanged(entries: IntersectionObserverEntry[], observer: IntersectionObserver) {
     entries.forEach(
-      entry => entry.isIntersecting && this.onImageAppearsInViewport(entry.target as HTMLImageElement, observer)
+      entry =>
+        entry.isIntersecting &&
+        this.onImageAppearsInViewport(entry.target as HTMLImageElement, observer)
     );
   }
 

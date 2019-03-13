@@ -70,10 +70,11 @@ $scale: 0.5; // the scale of loading image in place holder
 
 ```html
 <ngx-progressive-image-loader>
-  <ngx-image-placeholder> <!-- ngx-image-placeholder is optional -->
-    <img [src]="'/assets/Avengers1.jpg'" alt="" ngxProgressiveImage>
+  <ngx-image-placeholder>
+    <!-- ngx-image-placeholder is optional -->
+    <img [src]="'/assets/Avengers1.jpg'" alt="" ngxProgressiveImage />
   </ngx-image-placeholder>
-  <img src="/assets/Avengers2.jpg" alt="" ngxProgressiveImage>
+  <img src="/assets/Avengers2.jpg" alt="" ngxProgressiveImage />
 </ngx-progressive-image-loader>
 ```
 
@@ -81,8 +82,12 @@ $scale: 0.5; // the scale of loading image in place holder
 
 ```html
 <ngx-progressive-image-loader>
-  <img [src]="'/assets/Avengers6.jpg'" [srcset]="'/assets/Avengers6.jpg 800w,/assets/Avengers7.jpg 1366w'"
-      size="(max-width: 1000px) 100vw, 100vw" ngxProgressiveImage>
+  <img
+    [src]="'/assets/Avengers6.jpg'"
+    [srcset]="'/assets/Avengers6.jpg 800w,/assets/Avengers7.jpg 1366w'"
+    size="(max-width: 1000px) 100vw, 100vw"
+    ngxProgressiveImage
+  />
 </ngx-progressive-image-loader>
 ```
 
@@ -91,9 +96,9 @@ $scale: 0.5; // the scale of loading image in place holder
 ```html
 <ngx-progressive-image-loader>
   <picture ngxProgressiveImage>
-    <source [srcset]="'/assets/Avengers4.jpg'" media="(max-width: 1000px)">
-    <source [srcset]="'/assets/Avengers5.jpg'" media="(min-width: 1000px)">
-    <img [src]="'/assets/Avengers4.jpg'" alt="My default image">
+    <source [srcset]="'/assets/Avengers4.jpg'" media="(max-width: 1000px)" />
+    <source [srcset]="'/assets/Avengers5.jpg'" media="(min-width: 1000px)" />
+    <img [src]="'/assets/Avengers4.jpg'" alt="My default image" />
   </picture>
 </ngx-progressive-image-loader>
 ```

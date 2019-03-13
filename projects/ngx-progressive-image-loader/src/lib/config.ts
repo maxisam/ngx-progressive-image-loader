@@ -5,7 +5,9 @@ export interface IImageLoaderOptions extends IntersectionObserverInit {
   imageRatio: number;
   filter: string;
 }
-export const IMAGE_LOADER_CONFIG_TOKEN = new InjectionToken<IImageLoaderOptions>('Image loader Config');
+export const IMAGE_LOADER_CONFIG_TOKEN = new InjectionToken<IImageLoaderOptions>(
+  'Image loader Config'
+);
 
 export const DEFAULT_IMAGE_LOADER_OPTIONS = <IImageLoaderOptions>{
   // root?: Element | null;

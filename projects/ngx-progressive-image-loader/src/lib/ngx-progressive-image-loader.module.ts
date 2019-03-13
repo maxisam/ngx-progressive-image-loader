@@ -11,7 +11,11 @@ export function ConfigurationServiceFactory(options: IImageLoaderOptions) {
 }
 @NgModule({
   imports: [],
-  declarations: [ProgressiveImageLoaderComponent, ProgressiveImageDirective, ImagePlaceholderComponent],
+  declarations: [
+    ProgressiveImageLoaderComponent,
+    ProgressiveImageDirective,
+    ImagePlaceholderComponent
+  ],
   exports: [ProgressiveImageLoaderComponent, ProgressiveImageDirective, ImagePlaceholderComponent]
 })
 export class NgxProgressiveImageLoaderModule {
