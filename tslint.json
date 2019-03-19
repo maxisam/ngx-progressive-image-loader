@@ -20,7 +20,7 @@
     "no-forward-ref": false,
     "no-input-rename": true,
     "no-output-rename": true,
-    "pipe-naming": [true, "camelCase", "mpix"],
+    "pipe-naming": [true, "camelCase"],
     "use-host-property-decorator": false,
     "use-input-property-decorator": true,
     "use-life-cycle-interface": true,
