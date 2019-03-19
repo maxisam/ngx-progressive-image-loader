@@ -100,7 +100,13 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
     loadImage(this._Renderer, image);
   }
 
+  reset() {
+    this.targetQueue = [];
+    this.targetMap = new Map();
+    this.isObservable && this.intersectionObserver.disconnect();
+  }
   ngOnDestroy(): void {
-    this.intersectionObserver && this.intersectionObserver.disconnect();
+    this.isObservable && this.intersectionObserver.disconnect();
+    this.intersectionObserver = this.targetQueue = this.targetMap = undefined;
   }
 }
