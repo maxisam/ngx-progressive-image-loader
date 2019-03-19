@@ -1,4 +1,14 @@
-import { Directive, ElementRef, Inject, Input, OnChanges, OnInit, Optional, Renderer2, SimpleChanges } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  Inject,
+  Input,
+  OnChanges,
+  OnInit,
+  Optional,
+  Renderer2,
+  SimpleChanges
+} from '@angular/core';
 import { WINDOW } from 'ngx-window-token';
 
 import { ConfigurationService } from '../configuration.service';
@@ -50,7 +60,8 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
     @Optional()
     @Inject(ImagePlaceholderComponent)
     private _ImagePlaceholder: ImagePlaceholderComponent,
-    @Inject(ProgressiveImageLoaderComponent) private _ProgressiveImageLoader: ProgressiveImageLoaderComponent
+    @Inject(ProgressiveImageLoaderComponent)
+    private _ProgressiveImageLoader: ProgressiveImageLoaderComponent
   ) {}
   ngOnInit(): void {
     this.imageElement = this._ElementRef.nativeElement;
@@ -72,15 +83,19 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
     } else {
       // show image directly
       loadImage(this._Renderer, this.imageElement);
+      this.imageElement.classList.add('loaded');
     }
   }
   ngOnChanges(changes: SimpleChanges): void {
     changes.src && !changes.src.isFirstChange() && this.setDataSrc('data-src', this.src);
-    changes.srcset && !changes.srcset.isFirstChange() && this.setDataSrc('data-srcset', this.srcset);
+    changes.srcset &&
+      !changes.srcset.isFirstChange() &&
+      this.setDataSrc('data-srcset', this.srcset);
 
     if (
       this.isObserve &&
-      ((changes.src && !changes.src.isFirstChange()) || (changes.srcset && !changes.srcset.isFirstChange()))
+      ((changes.src && !changes.src.isFirstChange()) ||
+        (changes.srcset && !changes.srcset.isFirstChange()))
     ) {
       this._ProgressiveImageLoader.intersectionObserver.unobserve(this.imageElement);
       this._ProgressiveImageLoader.intersectionObserver.observe(this.imageElement);
@@ -101,7 +116,11 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
     }
   }
 
-  insertPlaceholder(parentElement: HTMLElement, imagePicture: HTMLElement, placeholder: HTMLElement) {
+  insertPlaceholder(
+    parentElement: HTMLElement,
+    imagePicture: HTMLElement,
+    placeholder: HTMLElement
+  ) {
     parentElement.insertBefore(placeholder, imagePicture);
     placeholder.style.paddingBottom = `${100 / this.imageRatio}%`;
     placeholder.appendChild(imagePicture);

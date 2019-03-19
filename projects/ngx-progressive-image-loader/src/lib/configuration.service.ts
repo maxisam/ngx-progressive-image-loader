@@ -1,6 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
 
-import { DEFAULT_IMAGE_LOADER_OPTIONS, IImageLoaderOptions, IMAGE_LOADER_CONFIG_TOKEN } from './config';
+import {
+  DEFAULT_IMAGE_LOADER_OPTIONS,
+  IImageLoaderOptions,
+  IMAGE_LOADER_CONFIG_TOKEN
+} from './config';
 
 @Injectable()
 export class ConfigurationService {

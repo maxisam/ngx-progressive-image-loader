@@ -6,8 +6,9 @@ import { ProgressiveImageLoaderComponent } from '../progressive-image-loader/pro
 @Component({
   selector: 'ngx-image-placeholder',
   template: `
-  <img class="placeholder-loading-image" [src]="safeLoadingImage" [style.filter]="imageFilter">
-  <ng-content></ng-content>`,
+    <img class="placeholder-loading-image" [src]="safeLoadingImage" [style.filter]="imageFilter" />
+    <ng-content></ng-content>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImagePlaceholderComponent implements OnInit {
@@ -37,7 +38,10 @@ export class ImagePlaceholderComponent implements OnInit {
     );
   }
 
-  constructor(private sanitizer: DomSanitizer, private _ProgressiveImageLoader: ProgressiveImageLoaderComponent) {}
+  constructor(
+    private sanitizer: DomSanitizer,
+    private _ProgressiveImageLoader: ProgressiveImageLoaderComponent
+  ) {}
 
   ngOnInit() {}
 }

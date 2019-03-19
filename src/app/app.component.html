@@ -1,60 +1,83 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+  <h1>Welcome to {{ title }}!</h1>
 </div>
 <div class="before-image">
   <p>
     <strong> Assume there are a bunch of text before scrolling into an image.</strong>
   </p>
   <p class="lorem-ipsum">
-    A bouch of text ~~~~ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    A bouch of text ~~~~ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   </p>
-  <p class="lorem-ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <p class="lorem-ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <p class="lorem-ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p class="lorem-ipsum">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+  <p class="lorem-ipsum">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+  <p class="lorem-ipsum">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
 </div>
 
 <h2>img Element</h2>
-<ngx-progressive-image-loader filter="blur(3px) drop-shadow(0 0 2.75rem green)" placeholderImageSrc="./assets/loading.png">
+<ngx-progressive-image-loader
+  filter="blur(3px) drop-shadow(0 0 2.75rem green)"
+  placeholderImageSrc="./assets/loading.png"
+>
   <!-- ngx-image-placeholder is optional -->
-  <ngx-image-placeholder [imageRatio]="2000/1295">
-    <img [src]="'/assets/Avengers1.jpg'" alt="" ngxProgressiveImage>
+  <ngx-image-placeholder [imageRatio]="2000 / 1295">
+    <img [src]="'/assets/Avengers1.jpg'" alt="" ngxProgressiveImage />
   </ngx-image-placeholder>
-  <img [src]="'/assets/Avengers2.jpg'" alt="" ngxProgressiveImage [imageRatio]="1920/1080" placeholderImageSrc="./assets/loading.png">
+  <img
+    [src]="'/assets/Avengers2.jpg'"
+    alt=""
+    ngxProgressiveImage
+    [imageRatio]="1920 / 1080"
+    placeholderImageSrc="./assets/loading.png"
+  />
   <button (click)="onImageSwitch()">Switch Image</button>
-  <img [src]="image3" alt="" ngxProgressiveImage>
+  <img [src]="image3" alt="" ngxProgressiveImage />
 </ngx-progressive-image-loader>
 <button (click)="onImageSetSwitch()">Switch Image</button>
 <h2>img srcset Element</h2>
 
 <ngx-progressive-image-loader filter="blur(3px) drop-shadow(0 0 0.75rem crimson)">
-  <img [src]="image6" [srcset]="image6 + ' 800w,' + image7 + ' 1366w' " size="(max-width: 1000px) 100vw, 100vw" ngxProgressiveImage>
+  <img
+    [src]="image6"
+    [srcset]="image6 + ' 800w,' + image7 + ' 1366w'"
+    size="(max-width: 1000px) 100vw, 100vw"
+    ngxProgressiveImage
+  />
 </ngx-progressive-image-loader>
 
 <h2>Picture Element</h2>
 <button (click)="onPictureSwitch()">Switch Image</button>
-<ngx-progressive-image-loader filter="blur(3px) drop-shadow(0 0 0.75rem crimson)" [imageRatio]="1777/999">
-
+<ngx-progressive-image-loader
+  filter="blur(3px) drop-shadow(0 0 0.75rem crimson)"
+  [imageRatio]="1777 / 999"
+>
   <picture>
-    <source [srcset]="image4" media="(max-width: 1000px)" ngxProgressiveImage>
-    <source [srcset]="image5" media="(min-width: 1000px)" ngxProgressiveImage>
-    <img [src]="image4" alt="My default image" ngxProgressiveImage>
+    <source [srcset]="image4" media="(max-width: 1000px)" ngxProgressiveImage />
+    <source [srcset]="image5" media="(min-width: 1000px)" ngxProgressiveImage />
+    <img [src]="image4" alt="My default image" ngxProgressiveImage />
   </picture>
-
 </ngx-progressive-image-loader>
 
 <p>
@@ -62,8 +85,9 @@
 </p>
 
 <p class="lorem-ipsum">
-  A bouch of text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-  cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  A bouch of text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+  ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+  voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 </p>
