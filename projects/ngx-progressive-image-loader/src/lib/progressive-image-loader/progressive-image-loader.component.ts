@@ -91,6 +91,7 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
     this.loading--;
     while (
       this.isAggressiveLoading &&
+      this.targetQueue &&
       this.targetQueue.length &&
       this.loading <= this.concurrentLoading
     ) {
