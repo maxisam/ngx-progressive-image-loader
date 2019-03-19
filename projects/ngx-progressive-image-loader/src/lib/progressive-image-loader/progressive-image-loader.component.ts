@@ -1,5 +1,14 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, Input, OnDestroy, OnInit, PLATFORM_ID, Renderer2 } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  Input,
+  OnDestroy,
+  OnInit,
+  PLATFORM_ID,
+  Renderer2
+} from '@angular/core';
 import { WINDOW } from 'ngx-window-token';
 
 import { ConfigurationService } from '../configuration.service';
@@ -7,9 +16,11 @@ import { isSpider, isSupportIntersectionObserver, loadImage } from '../util';
 
 @Component({
   selector: 'ngx-progressive-image-loader',
+  exportAs: 'ngxProgressiveImageLoader',
   template: `
     <ng-content></ng-content>
-  `
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
   // define the placeholder height for all images inside this components
