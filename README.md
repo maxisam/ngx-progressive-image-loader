@@ -25,6 +25,8 @@ Support Angular >=6.0.0
 
 - Load image directly for spider (SEO friendly) or non-supported browsers
 
+- Aggressive Loading. Able to continue to load even if images haven't got intersected when the concurrently loading count is lower than a certain value. (_after 4.0.0_)
+
 ## Install
 
 ```bat
@@ -136,7 +138,7 @@ For `ngx-image-placeholder` component, it takes
 
 - placeholderImageSrc
 
-(after 3.0.0, you can set imageRatio and placeholderImageSrc directly on `ngxProgressiveImage` and spare ngx-image-placeholder layer)
+(_after 3.0.0_, you can set imageRatio and placeholderImageSrc directly on `ngxProgressiveImage` and spare ngx-image-placeholder layer)
 
 For `ngx-progressive-image-loader` component, it takes
 
@@ -145,6 +147,10 @@ For `ngx-progressive-image-loader` component, it takes
 - placeholderImageSrc
 
 - filter
+
+- isAggressiveLoading: boolean; default to `true`; Set to `true` to enable **Aggressive Loading** feature. (_after 4.0.0_)
+
+- concurrentLoading: number; default t0 4; Decided at least how many concurrent loading when **Aggressive Loading** is enabled
 
 For `ngxProgressiveImage` directive, (only for image or source elements)
 

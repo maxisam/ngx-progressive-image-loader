@@ -1,6 +1,6 @@
 {
   "name": "ngx-progressive-image-loader",
-  "version": "4.0.0-beta.1",
+  "version": "4.0.0-beta.2",
   "author": {
     "name": "Sam Lin",
     "email": "maxisam@gmail.com"
@@ -26,6 +26,6 @@
   },
   "peerDependencies": {
     "@angular/common": ">=6.0.0 || >=7.0.0 || >=8.0.0",
-    "@angular/core": ">=6.0.0 || >=7.0.0 || >=8.0.00"
+    "@angular/core": ">=6.0.0 || >=7.0.0 || >=8.0.0"
   }
 }

@@ -41,17 +41,11 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
   get placeholderImageSrc(): string {
     return this._placeholderImageSrc || this._ProgressiveImageLoader.placeholderImageSrc;
   }
-
-  @Input()
-  src: string;
-  // tslint:disable-next-line:no-input-rename
-  @Input()
-  srcset: string;
-
-  @Input()
-  noPlaceholder = false;
+  @Input() src: string;
+  @Input() srcset: string;
+  @Input() noPlaceholder = false;
   imageElement: HTMLImageElement;
-  isObserve = false;
+  isObserved = false;
   constructor(
     private _ElementRef: ElementRef,
     public _Renderer: Renderer2,
@@ -67,14 +61,14 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
     this.imageElement = this._ElementRef.nativeElement;
     this.setDataSrc('data-src', this.src);
     this.setDataSrc('data-srcset', this.srcset);
-    if (this._ProgressiveImageLoader.intersectionObserver) {
+    if (this._ProgressiveImageLoader.isObservable) {
       // only image element need to be observe and have onload event
       if (this.imageElement instanceof HTMLImageElement) {
-        this.isObserve = true;
-        this._ProgressiveImageLoader.intersectionObserver.observe(this.imageElement);
-
+        this.isObserved = true;
+        this._ProgressiveImageLoader.observe(this.imageElement);
         this.imageElement.onload = () => {
           this.imageElement.classList.add('loaded');
+          this._ProgressiveImageLoader.imageLoaded();
         };
         if (!this._ImagePlaceholder && !this.noPlaceholder) {
           this.setPlaceholder();
@@ -93,12 +87,12 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
       this.setDataSrc('data-srcset', this.srcset);
 
     if (
-      this.isObserve &&
+      this.isObserved &&
       ((changes.src && !changes.src.isFirstChange()) ||
         (changes.srcset && !changes.srcset.isFirstChange()))
     ) {
-      this._ProgressiveImageLoader.intersectionObserver.unobserve(this.imageElement);
-      this._ProgressiveImageLoader.intersectionObserver.observe(this.imageElement);
+      this._ProgressiveImageLoader.unobserve(this.imageElement);
+      this._ProgressiveImageLoader.observe(this.imageElement);
     }
   }
   setDataSrc(attr: string, value: string) {
