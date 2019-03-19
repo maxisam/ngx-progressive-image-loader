@@ -52,8 +52,12 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.isAggressiveLoading = this._ConfigurationService.config.isAggressiveLoading;
-    this.concurrentLoading = this._ConfigurationService.config.concurrentLoading;
+    if (this.isAggressiveLoading === undefined) {
+      this.isAggressiveLoading = this._ConfigurationService.config.isAggressiveLoading;
+    }
+    if (this.concurrentLoading === undefined) {
+      this.concurrentLoading = this._ConfigurationService.config.concurrentLoading;
+    }
     if (
       isSupportIntersectionObserver(this.window) &&
       !isSpider(this.window) &&
