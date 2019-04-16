@@ -2,4 +2,5 @@
 // @import 'dist/ngx-progressive-image-loader/ngx-progressive-image-loader';
 
 $loading-image-scale: 0.5;
-@include progressive-image-loader($loading-image-scale);
+$loading-image-transition: opacity 1s linear;
+@include progressive-image-loader($loading-image-scale, $loading-image-transition);
