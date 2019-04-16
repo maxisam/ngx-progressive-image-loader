@@ -63,7 +63,8 @@ Add style to your global scss
 @import '~ngx-progressive-image-loader/ngx-progressive-image-loader';
 
 $scale: 0.5; // the scale of loading image in place holder
-@include progressive-image-loader($scale);
+$transition: opacity 1s linear; // the transition of loading image in place holder, you could try: opacity .3s ease
+@include progressive-image-loader($scale, $transition);
 ```
 
 ## Usage
