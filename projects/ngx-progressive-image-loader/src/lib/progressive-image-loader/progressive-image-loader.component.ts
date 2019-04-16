@@ -99,7 +99,7 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
       this.targetQueue.length &&
       this.loading <= this.concurrentLoading
     ) {
-      const next = this.targetQueue.pop();
+      const next = this.targetQueue.shift();
       this.targetMap.has(next) && this.loadImage(this.targetMap.get(next));
     }
   }
