@@ -1,11 +1,13 @@
 import {
   Directive,
   ElementRef,
+  EventEmitter,
   Inject,
   Input,
   OnChanges,
   OnInit,
   Optional,
+  Output,
   Renderer2,
   SimpleChanges
 } from '@angular/core';
@@ -43,6 +45,7 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
   @Input() src: string;
   @Input() srcset: string;
   @Input() noPlaceholder = false;
+  @Output() onImageLoaded = new EventEmitter<HTMLImageElement>();
   imageElement: HTMLImageElement;
   isObserved = false;
   constructor(
@@ -65,6 +68,7 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
         this.isObserved = true;
         this._ProgressiveImageLoader.observe(this.imageElement);
         this.imageElement.onload = () => {
+          this.onImageLoaded.emit(this.imageElement);
           this.imageElement.classList.add('loaded');
           this._ProgressiveImageLoader.imageLoaded();
         };
