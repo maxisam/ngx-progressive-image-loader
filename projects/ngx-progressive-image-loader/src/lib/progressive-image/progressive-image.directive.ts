@@ -9,7 +9,6 @@ import {
   Renderer2,
   SimpleChanges
 } from '@angular/core';
-import { WINDOW } from 'ngx-window-token';
 
 import { ConfigurationService } from '../configuration.service';
 import { ImagePlaceholderComponent } from '../image-placeholder/image-placeholder.component';
@@ -49,7 +48,6 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
   constructor(
     private _ElementRef: ElementRef,
     public _Renderer: Renderer2,
-    @Inject(WINDOW) private window: any,
     public _ConfigurationService: ConfigurationService,
     @Optional()
     @Inject(ImagePlaceholderComponent)
