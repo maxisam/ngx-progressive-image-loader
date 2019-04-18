@@ -6,6 +6,7 @@ import {
   Input,
   OnDestroy,
   OnInit,
+  Optional,
   PLATFORM_ID,
   Renderer2
 } from '@angular/core';
@@ -48,7 +49,9 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
     public _Renderer: Renderer2,
     public _ConfigurationService: ConfigurationService,
     @Inject(PLATFORM_ID) private platformId: any,
-    @Inject(WINDOW) private window: any
+    @Optional()
+    @Inject(WINDOW)
+    private window: any
   ) {}
 
   ngOnInit() {
@@ -59,6 +62,7 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
       this.concurrentLoading = this._ConfigurationService.config.concurrentLoading;
     }
     if (
+      this.window &&
       isSupportIntersectionObserver(this.window) &&
       !isSpider(this.window) &&
       isPlatformBrowser(this.platformId)
