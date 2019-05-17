@@ -4858,6 +4858,13 @@ ng-packagr@^4.2.0:
     uglify-js "^3.0.7"
     update-notifier "^2.3.0"
 
+ngx-logger@^3.3.13:
+  version "3.3.13"
+  resolved "https://registry.yarnpkg.com/ngx-logger/-/ngx-logger-3.3.13.tgz#d5705c114d4b4d29a1495dc4bd02e65ecdab6b3b"
+  integrity sha512-FKoLpcu3SSeufLlfZ4hlKjXgMGXxNTEfYt/mO0ZnBZw8ashmnfFT8g/3K25ZmDt620GUURt7AYLfl36DxBNSrw==
+  dependencies:
+    tslib "^1.9.0"
+
 ngx-progressive-image-loader@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/ngx-progressive-image-loader/-/ngx-progressive-image-loader-3.0.2.tgz#76bd52bcb4896da895b07b28015116ee1511311d"

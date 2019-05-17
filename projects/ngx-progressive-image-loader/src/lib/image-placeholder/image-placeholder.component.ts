@@ -12,8 +12,7 @@ import { ProgressiveImageLoaderComponent } from '../progressive-image-loader/pro
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImagePlaceholderComponent implements OnInit {
-  @HostBinding('class')
-  class = 'ngx-image-placeholder';
+  @HostBinding('class') class = 'ngx-image-placeholder';
   @HostBinding('style')
   get placeHolder(): SafeStyle {
     return this.sanitizer.bypassSecurityTrustStyle(
@@ -22,11 +21,9 @@ export class ImagePlaceholderComponent implements OnInit {
   }
 
   // to create a placeholder before finish loading the real image to avoid reflow
-  @Input()
-  imageRatio: number;
+  @Input() imageRatio: number;
   // a loading image showing before the real image is loaded
-  @Input()
-  placeholderImageSrc: string;
+  @Input() placeholderImageSrc: string;
 
   get imageFilter(): SafeStyle {
     return this.sanitizer.bypassSecurityTrustStyle(`${this._ProgressiveImageLoader.filter}`);

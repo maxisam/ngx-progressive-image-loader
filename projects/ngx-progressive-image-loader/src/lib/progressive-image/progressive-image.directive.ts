@@ -112,7 +112,7 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
     }
   }
 
-  insertPlaceholder(
+  private insertPlaceholder(
     parentElement: HTMLElement,
     imagePicture: HTMLElement,
     placeholder: HTMLElement
@@ -122,7 +122,7 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
     placeholder.appendChild(imagePicture);
   }
 
-  createPlaceholder(placeholderImage: HTMLImageElement) {
+  private createPlaceholder(placeholderImage: HTMLImageElement) {
     const placeholder = document.createElement('div');
     placeholder.classList.add('ngx-image-placeholder');
     placeholder.appendChild(placeholderImage);

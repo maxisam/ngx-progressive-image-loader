@@ -1,4 +1,5 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
+import { LoggerModule } from 'ngx-logger';
 
 import { IImageLoaderOptions, IMAGE_LOADER_CONFIG_TOKEN } from './config';
 import { ConfigurationService } from './configuration.service';
@@ -10,7 +11,7 @@ export function ConfigurationServiceFactory(options: IImageLoaderOptions) {
   return new ConfigurationService(options);
 }
 @NgModule({
-  imports: [],
+  imports: [LoggerModule],
   declarations: [
     ProgressiveImageLoaderComponent,
     ProgressiveImageDirective,

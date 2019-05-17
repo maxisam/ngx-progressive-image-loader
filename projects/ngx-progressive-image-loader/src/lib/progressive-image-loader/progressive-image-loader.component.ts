@@ -10,6 +10,7 @@ import {
   PLATFORM_ID,
   Renderer2
 } from '@angular/core';
+import { NGXLogger } from 'ngx-logger';
 import { WINDOW } from 'ngx-window-token';
 
 import { ConfigurationService } from '../configuration.service';
@@ -51,7 +52,8 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
     @Inject(PLATFORM_ID) private platformId: any,
     @Optional()
     @Inject(WINDOW)
-    private window: any
+    private window: any,
+    @Optional() private _Logger: NGXLogger
   ) {}
 
   ngOnInit() {
@@ -85,12 +87,17 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
   }
 
   observe(target: HTMLImageElement) {
+    // so intersection observer can always detect it correctly, otherwise image elements with 0 in height sometime don't load correctly
+    target.style.minHeight = '1rem';
     this.intersectionObserver.observe(target);
     this.targetMap.set(target.dataset.src, target);
     this.targetQueue.push(target.dataset.src);
+    this._Logger && this._Logger.debug('observe', this.targetMap);
   }
 
   unobserve(target: HTMLImageElement) {
+    target.style.minHeight = 'initial';
+    this._Logger && this._Logger.debug('unobserve', target);
     this.targetMap.delete(target.dataset.src);
     this.intersectionObserver.unobserve(target);
   }
@@ -108,9 +115,12 @@ export class ProgressiveImageLoaderComponent implements OnInit, OnDestroy {
     }
   }
   onIntersectionChanged(entries: IntersectionObserverEntry[], observer: IntersectionObserver) {
-    entries.forEach(
-      entry => entry.isIntersecting && this.loadImage(entry.target as HTMLImageElement)
-    );
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        this._Logger && this._Logger.debug('onIntersectionChanged', entry);
+        this.loadImage(entry.target as HTMLImageElement);
+      }
+    });
   }
   // start loading an image
   loadImage(image: HTMLImageElement) {
