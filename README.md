@@ -7,17 +7,13 @@
 
 Support Angular >=6.0.0
 
-## Dependency
-
-- ngx-logger
-
 ## Demo
 
 [stackblitz.com](https://stackblitz.com/github/maxisam/ngx-progressive-image-loader)
 
 ## Features
 
-- No other JS dependency besides logger. Just Angular
+- No other JS dependency. Just Angular
 
 - Use **IntersectionObserver** to determine the timing to load the image
 
