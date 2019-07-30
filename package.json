@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "prettier": "prettier --write \"**/*.{js,json,css,md,ts,html,component.html}\"",
+    "prettier": "prettier --write \"**/*.{json,md,ts,html,component.html}\"",
     "start": "ng serve",
     "build": "npm run build:lib",
     "build:lib": "ng build ngx-progressive-image-loader && npm run copy-scss && npm run copy-readme",
