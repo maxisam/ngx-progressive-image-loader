@@ -3,9 +3,9 @@ import { InjectionToken } from '@angular/core';
 export interface IImageLoaderOptions extends IntersectionObserverInit {
   placeholderImageSrc?: string;
   imageRatio: number;
-  filter: string;
-  isAggressiveLoading: boolean;
-  concurrentLoading: number;
+  filter?: string;
+  isAggressiveLoading?: boolean;
+  concurrentLoading?: number;
 }
 export const IMAGE_LOADER_CONFIG_TOKEN = new InjectionToken<IImageLoaderOptions>(
   'Image loader Config'
