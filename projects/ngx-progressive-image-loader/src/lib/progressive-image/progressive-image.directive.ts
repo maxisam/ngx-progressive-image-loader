@@ -1,15 +1,16 @@
 import {
   Directive,
   ElementRef,
+  EventEmitter,
   Inject,
   Input,
   OnChanges,
   OnInit,
   Optional,
+  Output,
   Renderer2,
   SimpleChanges
 } from '@angular/core';
-import { WINDOW } from 'ngx-window-token';
 
 import { ConfigurationService } from '../configuration.service';
 import { ImagePlaceholderComponent } from '../image-placeholder/image-placeholder.component';
@@ -41,21 +42,15 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
   get placeholderImageSrc(): string {
     return this._placeholderImageSrc || this._ProgressiveImageLoader.placeholderImageSrc;
   }
-
-  @Input()
-  src: string;
-  // tslint:disable-next-line:no-input-rename
-  @Input()
-  srcset: string;
-
-  @Input()
-  noPlaceholder = false;
+  @Input() src: string;
+  @Input() srcset: string;
+  @Input() noPlaceholder = false;
+  @Output() onImageLoaded = new EventEmitter<HTMLImageElement>();
   imageElement: HTMLImageElement;
-  isObserve = false;
+  isObserved = false;
   constructor(
     private _ElementRef: ElementRef,
     public _Renderer: Renderer2,
-    @Inject(WINDOW) private window: any,
     public _ConfigurationService: ConfigurationService,
     @Optional()
     @Inject(ImagePlaceholderComponent)
@@ -67,14 +62,15 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
     this.imageElement = this._ElementRef.nativeElement;
     this.setDataSrc('data-src', this.src);
     this.setDataSrc('data-srcset', this.srcset);
-    if (this._ProgressiveImageLoader.intersectionObserver) {
+    if (this._ProgressiveImageLoader.isObservable) {
       // only image element need to be observe and have onload event
       if (this.imageElement instanceof HTMLImageElement) {
-        this.isObserve = true;
-        this._ProgressiveImageLoader.intersectionObserver.observe(this.imageElement);
-
+        this.isObserved = true;
+        this._ProgressiveImageLoader.observe(this.imageElement);
         this.imageElement.onload = () => {
+          this.onImageLoaded.emit(this.imageElement);
           this.imageElement.classList.add('loaded');
+          this._ProgressiveImageLoader.imageLoaded();
         };
         if (!this._ImagePlaceholder && !this.noPlaceholder) {
           this.setPlaceholder();
@@ -93,12 +89,12 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
       this.setDataSrc('data-srcset', this.srcset);
 
     if (
-      this.isObserve &&
+      this.isObserved &&
       ((changes.src && !changes.src.isFirstChange()) ||
         (changes.srcset && !changes.srcset.isFirstChange()))
     ) {
-      this._ProgressiveImageLoader.intersectionObserver.unobserve(this.imageElement);
-      this._ProgressiveImageLoader.intersectionObserver.observe(this.imageElement);
+      this._ProgressiveImageLoader.unobserve(this.imageElement);
+      this._ProgressiveImageLoader.observe(this.imageElement);
     }
   }
   setDataSrc(attr: string, value: string) {
@@ -116,7 +112,7 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
     }
   }
 
-  insertPlaceholder(
+  private insertPlaceholder(
     parentElement: HTMLElement,
     imagePicture: HTMLElement,
     placeholder: HTMLElement
@@ -126,7 +122,7 @@ export class ProgressiveImageDirective implements OnInit, OnChanges {
     placeholder.appendChild(imagePicture);
   }
 
-  createPlaceholder(placeholderImage: HTMLImageElement) {
+  private createPlaceholder(placeholderImage: HTMLImageElement) {
     const placeholder = document.createElement('div');
     placeholder.classList.add('ngx-image-placeholder');
     placeholder.appendChild(placeholderImage);

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "package-host": {
+    "library-host": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/package-host",
+            "outputPath": "dist/library-host",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -45,19 +45,19 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "package-host:build",
+            "browserTarget": "library-host:build",
             "port": 5200
           },
           "configurations": {
             "production": {
-              "browserTarget": "package-host:build:production"
+              "browserTarget": "library-host:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "package-host:build"
+            "browserTarget": "library-host:build"
           }
         },
         "test": {
@@ -81,7 +81,7 @@
         }
       }
     },
-    "package-host-e2e": {
+    "library-host-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -89,11 +89,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "package-host:serve"
+            "devServerTarget": "library-host:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "package-host:serve:production"
+              "devServerTarget": "library-host:serve:production"
             }
           }
         },
@@ -140,7 +140,10 @@
       }
     }
   },
-  "defaultProject": "package-host",
+  "defaultProject": "library-host",
+  "cli": {
+    "packageManager": "yarn"
+  },
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
