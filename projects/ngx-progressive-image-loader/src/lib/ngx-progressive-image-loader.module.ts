@@ -19,7 +19,7 @@ export function ConfigurationServiceFactory(options: IImageLoaderOptions) {
   exports: [ProgressiveImageLoaderComponent, ProgressiveImageDirective, ImagePlaceholderComponent]
 })
 export class NgxProgressiveImageLoaderModule {
-  public static forRoot(config?: IImageLoaderOptions): ModuleWithProviders {
+  public static forRoot(config?: IImageLoaderOptions): ModuleWithProviders<NgxProgressiveImageLoaderModule> {
     return {
       ngModule: NgxProgressiveImageLoaderModule,
       providers: [
