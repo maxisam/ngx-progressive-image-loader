@@ -149,7 +149,8 @@
   },
   "defaultProject": "library-host",
   "cli": {
-    "packageManager": "yarn"
+    "packageManager": "yarn",
+    "analytics": "1a28e3ca-eaae-4071-8923-8098d2829fa9"
   },
   "schematics": {
     "@schematics/angular:component": {
