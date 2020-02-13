@@ -124,6 +124,11 @@
           "options": {
             "tsConfig": "projects/ngx-progressive-image-loader/tsconfig.lib.json",
             "project": "projects/ngx-progressive-image-loader/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-progressive-image-loader/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {

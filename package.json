@@ -6,7 +6,7 @@
     "prettier": "prettier --write \"**/*.{json,md,ts,html,component.html}\"",
     "start": "ng serve",
     "build": "npm run build:lib",
-    "build:lib": "ng build ngx-progressive-image-loader && npm run copy-scss && npm run copy-readme",
+    "build:lib": "ng build --prod ngx-progressive-image-loader && npm run copy-scss && npm run copy-readme",
     "build:lib:w": "ng build ngx-progressive-image-loader --watch",
     "publish:lib": "yarn publish ./dist/ngx-progressive-image-loader",
     "publish:lib:next": "yarn publish ./dist/ngx-progressive-image-loader --tag next",
