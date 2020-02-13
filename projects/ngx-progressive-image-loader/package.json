@@ -1,6 +1,6 @@
 {
   "name": "ngx-progressive-image-loader",
-  "version": "4.0.0",
+  "version": "5.0.0-beta02",
   "author": {
     "name": "Sam Lin",
     "email": "maxisam@gmail.com"
@@ -22,10 +22,10 @@
     "image lazy loader"
   ],
   "dependencies": {
-    "ngx-window-token": ">=2.0.0"
+    "ngx-window-token": ">=3.0.0 || >=3.0.0-beta01"
   },
   "peerDependencies": {
-    "@angular/common": ">=6.0.0",
-    "@angular/core": ">=6.0.0"
+    "@angular/common": ">=9.0.0",
+    "@angular/core": ">=9.0.0"
   }
 }

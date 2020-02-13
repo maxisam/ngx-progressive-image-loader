@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/library-host",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -24,6 +25,12 @@
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -117,6 +124,11 @@
           "options": {
             "tsConfig": "projects/ngx-progressive-image-loader/tsconfig.lib.json",
             "project": "projects/ngx-progressive-image-loader/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-progressive-image-loader/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -142,7 +154,8 @@
   },
   "defaultProject": "library-host",
   "cli": {
-    "packageManager": "yarn"
+    "packageManager": "yarn",
+    "analytics": "1a28e3ca-eaae-4071-8923-8098d2829fa9"
   },
   "schematics": {
     "@schematics/angular:component": {
